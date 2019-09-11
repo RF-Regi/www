@@ -1,0 +1,38 @@
+- title: "Søk"
+  url: "/search/"
+  side: left
+
+- title: RF-Regi
+  url: "/"
+  side: left
+
+- title: "Utleie"
+  url: "/utleie/"
+  side: right
+  dropdown:
+  - title: "Lydutstyr"
+    url: "/utleie/lyd/"
+  - title: "Lysutleie"
+    url: "/utleie/lysutstyr/"
+  - title: "Utleiepakker"
+    url: "/utleie/page/"
+  - title: ------------------------
+  - title: "Utleiebetingelser"
+    url: "/utleie/utleiebetingelser"
+
+- title: Frivillig
+  url: "/frivillig/"
+  side: right
+  dropdown:
+  - title: "Forskjellige verv"
+    url: "/frivillig/verv"
+  - title: "Bli med"
+    url: "/frivillig/blimed/"
+
+- title: Om oss
+  url: "/om/"
+  side: right
+
+- title: "Kontakt oss"
+  url: "/kontakt/"
+  side: right

@@ -1,0 +1,17 @@
+- menu_name: "Navigasjon"
+
+- name: "Utleie"
+  url: "/utleie"
+  title: "Utleie"
+
+- name: "Frivillig"
+  url: "/frivillig"
+  title: "Frivillig"
+
+- name: "Om oss"
+  url: "/om"
+  title: "Om oss"
+
+- name: "Kontakt oss"
+  url: "/kontakt/"
+  title: "Kontakt oss"

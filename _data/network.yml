@@ -1,0 +1,21 @@
+- menu_name: "Nyttige lenker"
+
+- name: "RF-Regi på facebook"
+  url: "http://facebook.com/rfregi"
+  title: "RF-Regi på facebook"
+
+- name: "Vedtekter"
+  url: "http://facebook.com/rfregi"
+  title: "Vedtekter"
+
+- name: "Github"
+  url: "http://github.com/rfregi"
+  title: "RF-Regi på github"
+
+- name: "Wiki siden til RF-Regi for interne"
+  url: "http://wiki.rfregi.no"
+  title: "RF-Regi på github"
+
+- name: "Redigere nettsiden"
+  url: "https://github.com/rfregi/www/"
+  title: "Redigere nettsiden"
