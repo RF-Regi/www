@@ -12,7 +12,7 @@ Som funksjonær får man et funksjonærbevis som gir deg internpriser på alle R
 
 Vi møtes jevnlig på mandager i Realistforeningens kjeller 1804. Ønsker du å bli med så kan du sende oss en mail eller fylle ut skjemaet under.
 
-<form name="contact" method="POST" data-netlify="true">
+<form name="JoinUs" method="POST" data-netlify="true">
   <p>
     <label>Ditt navn: <input type="text" name="navn" /></label>   
   </p>
@@ -20,7 +20,7 @@ Vi møtes jevnlig på mandager i Realistforeningens kjeller 1804. Ønsker du å 
     <label>Din e-post: <input type="email" name="email" /></label>
   </p>
   <p>
-    <label>Telfon: <input type="number" name="nummer" /></label>
+    <label>Telefon: <input type="number" name="nummer" /></label>
   </p>
   <p>
     <button type="submit">Send</button>
