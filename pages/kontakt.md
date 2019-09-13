@@ -7,7 +7,10 @@ teaser: "Vil du komme i kontakt med oss? Bruk skjemaet eller send oss en mail."
 permalink: "/kontakt/"
 ---
 
-<form name="contact" method="POST" data-netlify="true">
+<form name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true">
+  <p class="hidden">
+    <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+  </p>
   <p>
     <label>Ditt navn: <input type="text" name="navn" /></label>   
   </p>
