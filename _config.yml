@@ -39,7 +39,7 @@ improve_content: https://github.com/RF-Regi/www/edit/gh-pages
 # Markdown-Example for posts ![Image Text]({{ site.urlimg }}image.jpg)
 #
 #urlimg: 'https://phlow.github.io/feeling-responsive/images/'
-urlimg: 'https://github.com/rf-regi/www/images/'
+urlimg: 'https://github.com/RF-Regi/www/tree/master/images'
 
 
 # Logo size is 600x80 pixels
