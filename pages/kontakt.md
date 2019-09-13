@@ -15,7 +15,7 @@ permalink: "/kontakt/"
     <label>Din e-post: <input type="email" name="email" /></label>
   </p>
   <p>
-    <label>Tekst: <textarea name="Hva kan vi hjelpe deg med?"></textarea></label>
+    <label>Hva kan vi hjelpe deg med?: <textarea name="tekst:"></textarea></label>
   </p>
   <p>
     <button type="submit">Send</button>
