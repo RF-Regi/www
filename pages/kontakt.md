@@ -7,11 +7,19 @@ teaser: "Vil du komme i kontakt med oss? Bruk skjemaet eller send oss en mail."
 permalink: "/kontakt/"
 ---
 
-<form method="POST" action="https://formspree.io/post@rfregi.no">
-  <input type="text" name="navn" placeholder="Navnet ditt">
-  <input type="email" name="email" placeholder="Din e-post">
-  <textarea name="message" placeholder="Hva kan vi hjelpe deg med?"></textarea>
-  <button type="submit">Send melding</button>
+<form name="contact" method="POST" data-netlify="true">
+  <p>
+    <label>Ditt navn: <input type="text" name="navn" /></label>   
+  </p>
+  <p>
+    <label>Din e-post: <input type="email" name="email" /></label>
+  </p>
+  <p>
+    <label>Tekst: <textarea name="Hva kan vi hjelpe deg med?"></textarea></label>
+  </p>
+  <p>
+    <button type="submit">Send</button>
+  </p>
 </form>
 
 <h2>Generell kontakt</h2>
