@@ -12,8 +12,17 @@ Som funksjonær får man et funksjonærbevis som gir deg internpriser på alle R
 
 Vi møtes jevnlig på mandager i Realistforeningens kjeller 1804. Ønsker du å bli med så kan du sende oss en mail eller fylle ut skjemaet under.
 
-<form method="POST" action="https://formspree.io/frivillig@rfregi.no">
-  <input type="text" name="navn" placeholder="Navnet ditt">
-  <input type="email" name="email" placeholder="Din e-post">
-  <button type="submit">Send melding</button>
+<form name="contact" method="POST" data-netlify="true">
+  <p>
+    <label>Ditt navn: <input type="text" name="navn" /></label>   
+  </p>
+  <p>
+    <label>Din e-post: <input type="email" name="email" /></label>
+  </p>
+  <p>
+    <label>Telfon: <input type="number" name="nummer" /></label>
+  </p>
+  <p>
+    <button type="submit">Send</button>
+  </p>
 </form>
