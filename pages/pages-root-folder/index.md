@@ -6,7 +6,7 @@
 #
 layout: frontpage
 header:
-  image_fullwidth: header_unsplash_12.jpg
+  image_fullwidth: banner.jpg
 widget1:
   title: "Lydutleie"
   url: 'http://rfregi.no/utleie/lydutleie'
