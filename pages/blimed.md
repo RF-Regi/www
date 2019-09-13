@@ -23,6 +23,14 @@ Vi møtes jevnlig på mandager i Realistforeningens kjeller 1804. Ønsker du å 
     <label>Telefon: <input type="number" name="nummer" /></label>
   </p>
   <p>
+    <label>Hva vil du drive mest med?: <select name="role[]" multiple>
+      <option value="Lys">Lys</option>
+      <option value="Lyd">Lyd</option>
+      <option value="Scene">Scene</option>
+      <option value="Alt - Lyst å gjøre alt">Alt - Lyst å gjøre alt</option>
+    </select></label>
+  </p>
+  <p>
     <button type="submit">Send</button>
   </p>
 </form>
