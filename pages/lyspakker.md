@@ -26,8 +26,9 @@ Vi har en rekke lys som enkelt kan henges opp og lage effekter for dansegulvet u
 * Pixelbar - Led bar, Blinker farger
 * Snowpar - Runde lamper, blinker farger
 
+Under kan de se et eksempel på hvordan lys en Martin T-Rex kan lage
 <div class="flex-video">
-        <iframe width="1280" height="720" src="//https://youtu.be/EeexzEN4dNw?t=10" frameborder="0" allowfullscreen></iframe>
+   <iframe width="200" height="145" src="https://www.youtube.com/embed/EeexzEN4dNw" frameborder="0"></iframe>
 </div>
 
 -----
