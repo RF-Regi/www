@@ -5,10 +5,10 @@
 # 3. Change default post/page authors in config.yml
 #
 # Resource › http://blog.sorryapp.com/blogging-with-jekyll/2014/02/06/adding-authors-to-your-jekyll-site.html
-maxiix3:
+maximinh:
     name: "Maximiliano Horta"
     siterole: "webmaster, developer, designer"
-    uri: https://maxhorta.no
+    uri: https://maxhorta.me
 
     #phlow: # replace this with your info
     #  name: "Phlow"

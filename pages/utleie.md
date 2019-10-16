@@ -26,7 +26,7 @@ Når det gjelder bruk av utstyr vil vi anbefale å leie en tekniker hvis dere ik
 </div>
 <div class="row">
   <div class="large-6 columns">
-   <div style="font-size:150%; text-align:center;"><img src="htts://rfregi.no/images/scene.jpg" alt="alternate text" width="width" height="height" style="padding-bottom:0.5em;" border="5" />Scene og teknisk</div>
+   <div style="font-size:150%; text-align:center; border:15;"><a href="/utleie/scene-teknisk"><img src="/images/scene.jpg" alt="alternate text" width="width" height="height" style="padding-bottom:0.5em;" border="5" />Scene og teknisk</a></div>
   </div>
   <div class="large-6 columns">
    <div style="font-size:150%; text-align:center;"><img src="/images/Geir-tek.jpg" alt="alternate text" width="width" height="height" style="padding-bottom:0.5em;" />Teknikere og riggere</div>

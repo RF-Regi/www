@@ -11,11 +11,11 @@
   side: right
   dropdown:
   - title: "Lydutstyr"
-    url: "/utleie/lyd/"
-  - title: "Lysutleie"
-    url: "/utleie/lysutstyr/"
-  - title: "Utleiepakker"
-    url: "/utleie/page/"
+    url: "/utleie/lydpakker/"
+  - title: "Lysutstyr"
+    url: "/utleie/lyspakker/"
+  - title: "Scene og teknisk"
+    url: "/utleie/scene-teknisk/"
   - title: ------------------------
   - title: "Utleiebetingelser"
     url: "/utleie/utleiebetingelser"
@@ -32,6 +32,9 @@
 - title: Om oss
   url: "/om/"
   side: right
+  dropdown:
+  - title: "Styret"
+    url: "/om/styret/"
 
 - title: "Kontakt oss"
   url: "/kontakt/"

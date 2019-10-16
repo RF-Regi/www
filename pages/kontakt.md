@@ -1,7 +1,7 @@
 ---
 layout: page-fullwidth
 title: "Kontakt oss"
-meta_title: "Contact and use our contact form"
+meta_title: "Kontakt oss"
 #subheadline: "Kontaktskjema finner du her"
 teaser: "Vil du komme i kontakt med oss? Bruk skjemaet eller send oss en mail."
 permalink: "/kontakt/"
@@ -32,6 +32,14 @@ permalink: "/kontakt/"
 </li>
 </ul>
 
+<h2> Utleie </h2>
+<ul>
+<li>
+Utleieansvarlig: Erlend Øvsttun Amsen:
+<a class="btn text-center btn--info" rel="external" href="mailto:&#117;&#116;&#108;&#101;&#105;&#101;&#064;&#114;&#102;&#114;&#101;&#103;&#105;&#046;&#110;&#111;" title="Kontakt oss her for spørsmål om utleie og lignende">utleie[at]rfregi.no <i class="fas fa-fw fa-envelope"></i> </a>
+</li>
+</ul>
+
 <h2>Styret</h2>
 <ul>
 <li>
@@ -45,7 +53,7 @@ Maximiliano Horta - Forretningsfører
 </li>
 
 <li>
-Adrian -Eriksen DJ-Sjef
+Adrian Eriksen DJ-Sjef
 <a class="btn text-center btn--info" rel="external" href="mailto:&#100;&#106;&#045;&#115;&#106;&#101;&#102;&#064;&#114;&#102;&#114;&#101;&#103;&#105;&#046;&#110;&#111;" title="DJ-Sjef"> DJ-Sjef[at]rfregi.no <i class="fas fa-fw fa-envelope"></i> </a>
 </li>
 
