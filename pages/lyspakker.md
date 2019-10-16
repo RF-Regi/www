@@ -26,8 +26,9 @@ Vi har en rekke lys som enkelt kan henges opp og lage effekter for dansegulvet u
 * Pixelbar - Led bar, Blinker farger
 * Snowpar - Runde lamper, blinker farger
 
-[plugin:youtube](https://www.youtube.com/watch?v=EeexzEN4dNw)
-
+<div class="flex-video">
+        <iframe width="1280" height="720" src="//https://youtu.be/EeexzEN4dNw?t=10" frameborder="0" allowfullscreen></iframe>
+</div>
 
 -----
 
