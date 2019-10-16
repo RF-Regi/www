@@ -13,10 +13,10 @@
 #   class: icon-soundcloud
 #   title: ""
 
-# - name: Instagram
-#   url: http://instagram.com/
-#   class: icon-instagram
-#   title: ""
+ - name: Instagram
+   url: http://instagram.com/rf_regi
+   class: icon-instagram
+   title: ""
 
 # - name: Pinterest
 #   url: http://www.pinterest.com/
