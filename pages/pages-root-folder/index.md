@@ -7,7 +7,8 @@
 layout: frontpage
 header:
   title: "Velommen til RF-Regi"
-  image_fullwidth: banner.jpg
+  image_fullwidth: "redbackline.jpg"
+  #image_fullwidth: images/redbackline.jpg
 widget1:
   title: "Lydutleie"
   url: '/utleie/lydutleie'
