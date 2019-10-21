@@ -5,16 +5,16 @@
   title: "RF-Regi på facebook"
 
 - name: "Vedtekter"
-  url: "http://facebook.com/rfregi"
+  url: "https://github.com/realistforeningen/lover/blob/master/lover-regi.rst"
   title: "Vedtekter"
 
 - name: "Github"
-  url: "http://github.com/rfregi"
+  url: "http://github.com/RF-Regi"
   title: "RF-Regi på github"
 
 - name: "Wiki siden til RF-Regi for interne"
   url: "http://wiki.rfregi.no"
-  title: "RF-Regi på github"
+  title: "RF-Regi sin wiki"
 
 - name: "Redigere nettsiden"
   url: "https://github.com/rfregi/www/"
