@@ -11,12 +11,12 @@ header:
   #image_fullwidth: images/redbackline.jpg
 widget1:
   title: "Lydutleie"
-  url: '/utleie/lydutleie'
+  url: '/utleie/lydpakker'
   image: lyd-eksempel.jpg
   text: 'Vi har det meste av høyttalere mikrofoner og mixere enten dere trenger utstyr til enkle oppsett som debatter, eller mere avanserte ting som revyer, konserter eller fester.'
 widget2:
   title: "Lysutleie"
-  url: '/utleie/lysutleie'
+  url: '/utleie/lyspakker'
   image: lys-eksempel.jpg
   text: 'Vi har lyskontrollere, lyskastere, movingheads og strober. Trenger du lys til et arrangement har vi det du trenger.'
 widget3:
