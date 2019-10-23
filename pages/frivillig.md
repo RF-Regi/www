@@ -30,9 +30,22 @@ Lys er for dem som alltid ser opp i taket på utesteder og blir fasinert over ly
 ### Ønsker du å bli med i foreningen?
 Vi har ukentlige møter på mandager i Realistforeningen. Disse starter 18.04, så det er bare å dukke opp for en hyggelig prat med de frivellige i foreningen. Det er selvfølgelig også mulig å sende oss en mail hvis du foretrekker det. Send en mail til [regiformann@rfregi.no](mailto:regiformann@rfregi.no), så blir du kontakt snart og blir satt i kontakt med riktig person etter hva du ønsker å bidra med.
 
+<a href="/frivillig/verv">Mer om de forskjellige vervene kan du finne her </a>
 
-<form method="POST" action="https://formspree.io/frivillig@rfregi.no">
-  <input type="text" name="navn" placeholder="Navnet ditt">
-  <input type="email" name="email" placeholder="Din e-post">
-  <button type="submit">Send melding</button>
+<form name="JoinUs" method="POST" netlify-honeypot="bot-field" data-netlify="true">
+  <p hidden>
+    <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+  </p>
+  <p>
+    <label>Ditt navn: <input type="text" name="navn" /></label>   
+  </p>
+  <p>
+    <label>Din e-post: <input type="email" name="email" /></label>
+  </p>
+  <p>
+    <label>Telefon: <input type="number" name="nummer" /></label>
+  </p>
+  <p>
+    <button type="submit">Send</button>
+  </p>
 </form>
