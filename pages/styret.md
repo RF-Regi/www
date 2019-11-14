@@ -2,7 +2,7 @@
 layout: page-fullwidth
 title: "Styret"
 header:
-permalink: "/om/styret"
+permalink: "/om/styret/"
 ---
 
 <div class="row t60">
