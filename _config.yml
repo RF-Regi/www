@@ -25,7 +25,7 @@ author: Maximiliano Horta maxiix3@github.com
 
 # This URL is the main address for absolute links. Don't include a slash at the end.
 #
-url: 'https://rf-regi.netlify.com'
+url: 'https://rf-regi.firebaseapp.com'
 baseurl: ''
 
 # This is for the editing function in _/includes/improve_content
@@ -40,7 +40,7 @@ improve_content: https://github.com/RF-Regi/www/edit/gh-pages
 #
 #urlimg: 'https://phlow.github.io/feeling-responsive/images/'
 #urlimg: 'https://github.com/RF-Regi/www/tree/master/images/'
-urlimg: 'https://rf-regi.netlify.com/images/'
+urlimg: 'https://rf-regi.firebaseapp.com/images/'
 
 
 # Logo size is 600x80 pixels
