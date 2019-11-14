@@ -1,0 +1,52 @@
+version: 2
+jobs:
+  Bundle-Install:
+    docker:
+    - image: circleci/ruby:2.4
+    steps:
+    - run:
+        name: Install bundle
+        command: gem install bundler --version=1.17.1
+  Jekyll-build:
+    docker:
+    - image: circleci/ruby:2.4
+    steps:
+    - checkout
+    - run:
+        name: Install rubygems
+        command: bundle install
+    - run:
+        name: Build Jekyll
+        command: bundle exec jekyll build --verbose
+    - persist_to_workspace:
+        root:
+        paths:
+            - _site
+  Firebase-Install-and-Build:
+    docker:
+    - image: circleci/node:7.10
+    steps:
+    - checkout
+    - attach_workspace:
+        at: /tmp/workspace
+    - run:
+        name: Copy files from workspace
+        command: cp -r /tmp/workspace/_site blog
+    - run:
+        name: Install Firebase tools if not installed
+        command: npm install --save-dev firebase-tools@4.2.1
+    - run:
+        name: Deploy to Firebase
+        command: ln -s ./node_modules/.bin/firebase . && ./firebase deploy --token=$FIREBASE_TOKEN
+          --non-interactive
+workflows:
+  version: 2
+  Example_Workflow:
+    jobs:
+    - Bundle-Install
+    - Jekyll-build:
+        requires:
+        - Bundle-Install
+    - Firebase-Install-and-Build:
+        requires:
+        - Jekyll-build
