@@ -33,7 +33,7 @@ permalink: "/om/styret/"
  </div><!-- /.medium-6.columns -->
 
  <div class="medium-6 columns b30">
-  <img src="https://phlow.github.io/feeling-responsive/images/webdesign_screenshot_nixdorf.jpg" alt="" />
+  <img src="/images/marius.jpg" alt="" />
    Marius Torsvoll - Realistforeningens formann
    <p>
 <a class="btn text-center btn--info" rel="external" href="mailto:&#114;&#102;&#045;&#102;&#111;&#114;&#109;&#097;&#110;&#110;&#064;&#114;&#102;&#114;&#101;&#103;&#105;&#046;&#110;&#111;" title="Realistforeningens formann"> rf-formann[at]rfregi.no <i class="fas fa-fw fa-envelope"></i> </a>
