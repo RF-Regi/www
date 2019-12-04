@@ -147,7 +147,7 @@ defaults:
 
 #google_author:             'https://plus.google.com/u/0/118311555303973066167'
 google_site_verification:  '8pmD-wWpqwUjARxeqqblLWeQ-UNwuNbDwnhSkxWEAxw'
-google_site_verification:  'PeEcr9_09bqXTww7leOBWPWNETJ2ypddh_kbLIGLu_E'
+#google_site_verification:  'PeEcr9_09bqXTww7leOBWPWNETJ2ypddh_kbLIGLu_E'   #Used to verify domain
 bing_webmastertools_id:    '72C1269BD9CFA4A49E838E28671FB5A1'
 # yandex_site_verification:  ''
 # alexa_verify_id:           ''
