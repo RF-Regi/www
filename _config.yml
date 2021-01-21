@@ -271,7 +271,7 @@ google_analytics_tracking_id: UA-110482163-1
 
 asciidoctor-enabled: false
 asciidoctor:
-  description: testtewtetrue
+  description: 
   attributes:
     source-highlighter: coderay
     coderay-css: style
