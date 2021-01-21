@@ -7,13 +7,7 @@
 # Resource › http://blog.sorryapp.com/blogging-with-jekyll/2014/02/06/adding-authors-to-your-jekyll-site.html
 maximinh:
     name: "Maximiliano Horta"
-    siterole: "webmaster, developer, designer"
-    uri: https://maxhorta.me
+    siterole: "webmaster, developer"
+    #uri: https://maxhorta.no
 
-    #phlow: # replace this with your info
-    #  name: "Phlow"
-    #  siterole: "webmaster, developer, copywriter, designer"
-    #  uri: http://phlow.de/
-    #  email:
-    #  twitter: "@phlow"
 # you can add more authors here
