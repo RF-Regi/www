@@ -35,7 +35,7 @@ permalink: "/kontakt/"
 <h2> Utleie </h2>
 <ul>
 <li>
-Utleieansvarlig: Oscar Halse:
+Utleieansvarlig: Magnus Olsen Kallar:
 <a class="btn text-center btn--info" rel="external" href="mailto:&#117;&#116;&#108;&#101;&#105;&#101;&#064;&#114;&#102;&#114;&#101;&#103;&#105;&#046;&#110;&#111;" title="Kontakt oss her for spørsmål om utleie og lignende">utleie[at]rfregi.no <i class="fas fa-fw fa-envelope"></i> </a>
 </li>
 </ul>
@@ -43,23 +43,23 @@ Utleieansvarlig: Oscar Halse:
 <h2>Styret</h2>
 <ul>
 <li>
-Even Tobias Eriksen - Regiformann 
+Christian Brynildsen - Regiformann 
 <a class="btn text-center btn--info" rel="external" href="mailto:&#114;&#101;&#103;&#105;&#102;&#111;&#114;&#109;&#097;&#110;&#110;&#064;&#114;&#102;&#114;&#101;&#103;&#105;&#046;&#110;&#111;" title="Regiformann"> Regiformann[at]rfregi.no <i class="fas fa-fw fa-envelope"></i> </a>
 </li>
 
 <li>
-Amund Isaksen - Forretningsfører
+Maximiliano Nunez Horta - Forretningsfører
 <a class="btn text-center btn--info" rel="external" href="mailto:&#102;&#111;&#114;&#114;&#101;&#116;&#110;&#105;&#110;&#103;&#115;&#102;&#111;&#114;&#101;&#114;&#064;&#114;&#102;&#114;&#101;&#103;&#105;&#046;&#110;&#111;" title="Forretningsfører"> Forretningsforer[at]rfregi.no <i class="fas fa-fw fa-envelope"></i> </a>
 </li>
 
 <li>
-Anna Christina Olaussen DJ-Sjef
+Sigve Ravn Fjeld-Eiken DJ-Sjef
 <a class="btn text-center btn--info" rel="external" href="mailto:&#100;&#106;&#045;&#115;&#106;&#101;&#102;&#064;&#114;&#102;&#114;&#101;&#103;&#105;&#046;&#110;&#111;" title="DJ-Sjef"> DJ-Sjef[at]rfregi.no <i class="fas fa-fw fa-envelope"></i> </a>
 </li>
 
 
 <li>
-Jon Aleksander Prøitz - Realistforeningens formann
+Iver Oknes - Realistforeningens formann
 <a class="btn text-center btn--info" rel="external" href="mailto:&#114;&#102;&#045;&#102;&#111;&#114;&#109;&#097;&#110;&#110;&#064;&#114;&#102;&#114;&#101;&#103;&#105;&#046;&#110;&#111;" title="Realistforeningens formann"> rf-formann[at]rfregi.no <i class="fas fa-fw fa-envelope"></i> </a>
 </li>
 </ul>
