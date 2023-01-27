@@ -19,8 +19,7 @@ Lydansvarlig er en person som har ansvaret for utstyret som brukes til lyd. Pers
 Lysansvarlig er en person som har ansvaret for utstyret som brukes til lys. Personen har oversikt over hvilket utstyr som fungerer og hva som må repareres. Det forventes at lysansvarlig bidrar noe ekstra, gjerne i form av enkel intern kursing av hvordan utstyret fungerer. Det er en fordel at lysansvarlig er interessert i feltet og kan komme med anbefalinger til innkjøp av nye produkter som RF-Regi kan ha nytte av.
 <h5>Pakkeansvarlig</h5>
 Pakkeansvarlig er en person som har ansvar for at utstyret som skal leies ut pakkes klart, slik at utstyr bare er å hente.
-<h5>Utleieansvarlig</h5>
-Utleieansvarlig er ansvarlig for å besvare av mail og kommunisere med de som ønsker å leie utstyr fra oss. Utleieansvarlig har ansvar for at kommunikasjonen går greit og at utleiene registreres i systemet. 
+
 
 <h3>Styret</h3>
 <h5>Regiformann</h5>
@@ -29,5 +28,7 @@ Regiformann er foreningens leder og er ansvarlig for daglig drift av RF-Regi, me
 DJ-sjefens oppgave er å sørge for opplæring av DJ-er og organisere en vaktplan slik at det alltid finnes en DJ på festene/fredagspubene til Realistforeningen. 
 <h5>Forretningsfører</h5>
 Forretningsfører er foreningens nestleder og har ansvaret for RF-Regi sitt regnskap. Forretningsføreren fører regnskapet til RF-Regi, setter opp budsjett og sender ut faktura for utleiene.
+<h5>Utleieansvarlig</h5>
+Utleieansvarlig er ansvarlig for å besvare av mail og kommunisere med de som ønsker å leie utstyr fra oss. Utleieansvarlig har ansvar for at kommunikasjonen går greit og at utleiene registreres i systemet. 
 <h5>Realistforeningens formann</h5>
 Realistforeningens formann er Realistforeningen sin representant i styret og er med på planlegging av langtidsplanene til RF-Regi. 
