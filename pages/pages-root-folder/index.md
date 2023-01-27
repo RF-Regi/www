@@ -6,7 +6,7 @@
 #
 layout: frontpage
 header:
-  title: "Velommen til RF-Regi"
+  title: "Velkommen til RF-Regi"
   image_fullwidth: "redbackline.jpg"
   #image_fullwidth: images/redbackline.jpg
 widget1:
