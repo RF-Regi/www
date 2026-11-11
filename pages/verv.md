@@ -7,7 +7,7 @@ teaser: "Kunne du tenkt deg å ta et verv i RF-Regi?"
 permalink: "/frivillig/verv/"
 ---
 
-Styret til RF-Regi består av fire personer, som velges ved generalforsamling hvert semester. Tre av vervene velges på generalforsamlingen til RF-Regi, mens siste velges av Realistforeningen. Resten av RF-Regi har ganske flat struktur, men det er gode muligheter for å lære ekstra mye ved å ta litt ekstra ansvar! Her kan du lese litt om vervene vi har.
+Styret til RF-Regi består av fem personer, som velges ved generalforsamling hvert semester. Fire av vervene velges på generalforsamlingen til RF-Regi, mens siste velges av Realistforeningen. Resten av RF-Regi har ganske flat struktur, men det er gode muligheter for å lære ekstra mye ved å ta litt ekstra ansvar! Her kan du lese litt om vervene vi har.
 
 <h3>Funksjonær</h3>
 Funksjonær er vervet for deg som er ny i RF-Regi. Du er poteten som kan litt om alt, eller alt om litt. Du bidrar til at RF-Regi får ting til å gå rundt. Du deltar på opprigg og nedrigg, mandagsmøter og dugnader. Det er ingen krav om forkunnskaper for å være funksjonær og du vil trolig lære mer enn nok hvis du er litt nysgjerrig.
@@ -15,10 +15,10 @@ Funksjonær er vervet for deg som er ny i RF-Regi. Du er poteten som kan litt om
 <h3>Mellomlederverv</h3>
 <h5>Lydansvarlig</h5>
 Lydansvarlig er en person som har ansvaret for utstyret som brukes til lyd. Personen har oversikt over hvilket utstyr som fungerer og hva som må repareres. Det forventes at lydansvarlig bidrar noe ekstra, gjerne i form av enkel intern kursing av hvordan utstyret fungerer. Det er en fordel at lydansvarlig er interessert i feltet og kan komme med anbefalinger til innkjøp av nye produkter som RF-Regi kan ha nytte av.
-<h5>Forretningsfører</h5>
+<h5>Lysansvarlig</h5>
 Lysansvarlig er en person som har ansvaret for utstyret som brukes til lys. Personen har oversikt over hvilket utstyr som fungerer og hva som må repareres. Det forventes at lysansvarlig bidrar noe ekstra, gjerne i form av enkel intern kursing av hvordan utstyret fungerer. Det er en fordel at lysansvarlig er interessert i feltet og kan komme med anbefalinger til innkjøp av nye produkter som RF-Regi kan ha nytte av.
 <h5>Pakkeansvarlig</h5>
-Pakkeansvarlig er en person som har ansvar for at utstyret som skal leies ut pakkes klart, slik at utstyr bare er å hente.
+Pakkeansvarlig er en person som har ansvar for at utstyret som skal leies ut pakkes klart, slik at utstyr bare er å hente. Pakkeansvarlig har også ansvaret for at riktig utstyr blir returnert, og videreformidler dersom det er noen mangler.
 
 
 <h3>Styret</h3>
