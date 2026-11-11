@@ -35,7 +35,7 @@ permalink: "/kontakt/"
 <h2> Utleie </h2>
 <ul>
 <li>
-Utleieansvarlig: Stanislaw Marek Frey:
+Utleieansvarlig: Johann Tveranger:
 <a class="btn text-center btn--info" rel="external" href="mailto:&#117;&#116;&#108;&#101;&#105;&#101;&#064;&#114;&#102;&#114;&#101;&#103;&#105;&#046;&#110;&#111;" title="Kontakt oss her for spørsmål om utleie og lignende">utleie[at]rfregi.no <i class="fas fa-fw fa-envelope"></i> </a>
 </li>
 </ul>
@@ -43,7 +43,7 @@ Utleieansvarlig: Stanislaw Marek Frey:
 <h2>Styret</h2>
 <ul>
 <li>
-Simonn Strand Doupovec - Regiformann 
+Magnus Olsen Kallar - Regiformann 
 <a class="btn text-center btn--info" rel="external" href="mailto:&#114;&#101;&#103;&#105;&#102;&#111;&#114;&#109;&#097;&#110;&#110;&#064;&#114;&#102;&#114;&#101;&#103;&#105;&#046;&#110;&#111;" title="Regiformann"> Regiformann[at]rfregi.no <i class="fas fa-fw fa-envelope"></i> </a>
 </li>
 
@@ -53,13 +53,13 @@ Oscar Halse - Forretningsfører
 </li>
 
 <li>
-Elías Örn Frímannsson - DJ-Sjef
+Felix Osmundsvaag - DJ-Sjef
 <a class="btn text-center btn--info" rel="external" href="mailto:&#100;&#106;&#045;&#115;&#106;&#101;&#102;&#064;&#114;&#102;&#114;&#101;&#103;&#105;&#046;&#110;&#111;" title="DJ-Sjef"> DJ-Sjef[at]rfregi.no <i class="fas fa-fw fa-envelope"></i> </a>
 </li>
 
 
 <li>
-Frida Rasmussen - Realistforeningens formann
+Edvard Aasen - Realistforeningens formann
 <a class="btn text-center btn--info" rel="external" href="mailto:&#114;&#102;&#045;&#102;&#111;&#114;&#109;&#097;&#110;&#110;&#064;&#114;&#102;&#114;&#101;&#103;&#105;&#046;&#110;&#111;" title="Realistforeningens formann"> rf-formann[at]rfregi.no <i class="fas fa-fw fa-envelope"></i> </a>
 </li>
 </ul>
