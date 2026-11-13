@@ -1,5 +1,5 @@
 ---
-name: 'Elías Örn Frímannsson'
+name: 'Felix Osmundsvaag'
 role: 'DJ-sjef'
 email: 'on.igerfr@fejs-jd'
 order: 3
