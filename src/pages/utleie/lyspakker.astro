@@ -1,0 +1,40 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+
+const pakker = (await getCollection('pakker', ({ data }) => data.type === 'lys')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const rendered = await Promise.all(
+  pakker.map(async (pakke) => ({ pakke, Content: (await render(pakke)).Content }))
+);
+---
+
+<Base title="Lyspakker" description="RF-Regis lyspakker - utleie av lysutstyr til studentforeninger i Oslo.">
+  <PageHead
+    title="Lyspakker"
+    teaser="RF-Regi har lyskontrollere, lyskastere, movingheads og strober. Her er pakkene vi har satt sammen."
+    breadcrumb={[{ label: 'Utleie', url: '/utleie/' }, { label: 'Lyspakker' }]}
+  />
+  <div class="page-body wrap">
+    {
+      rendered.map(({ pakke, Content }) => (
+        <article class="pakke">
+          <h2>{pakke.data.title}</h2>
+          <div class="pakke-body">
+            <Content />
+          </div>
+          {pakke.data.items && (
+            <ul class="pakke-items">
+              {pakke.data.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          )}
+        </article>
+      ))
+    }
+  </div>
+</Base>

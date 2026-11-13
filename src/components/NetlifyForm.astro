@@ -1,0 +1,95 @@
+---
+/**
+ * NetlifyForm — reusable Netlify Forms contact form, no JS required.
+ * Props:
+ *   name        string        Form name as it appears in Netlify (required)
+ *   fields      FormField[]   Ordered list of fields (required)
+ *   submitLabel string        Submit button text (default "Send")
+ *
+ * Usage note: the form must be present in the static build output for
+ * Netlify to register it; do not render it conditionally client-side.
+ */
+interface FormField {
+  name: string;
+  label: string;
+  type?: 'text' | 'email' | 'tel' | 'url' | 'number' | 'date' | 'textarea' | 'select' | 'checkbox';
+  required?: boolean;
+  placeholder?: string;
+  autocomplete?: string;
+  options?: string[];
+  rows?: number;
+}
+
+interface Props {
+  name: string;
+  fields: FormField[];
+  submitLabel?: string;
+}
+
+const { name, fields, submitLabel = 'Send' } = Astro.props;
+---
+
+<form class="form" name={name} method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value={name} />
+  <p class="hp-field" aria-hidden="true">
+    <label>
+      Ikke fyll ut dette feltet
+      <input name="bot-field" tabindex="-1" autocomplete="off" />
+    </label>
+  </p>
+
+  {fields.map((field) => {
+    const type = field.type ?? 'text';
+    const id = `field-${field.name}`;
+    const common = {
+      id,
+      name: field.name,
+      required: field.required || undefined,
+      placeholder: field.placeholder || undefined,
+      autocomplete: field.autocomplete || undefined,
+    };
+
+    if (type === 'textarea') {
+      return (
+        <>
+          <label for={id}>{field.label}</label>
+          <textarea {...common} rows={field.rows ?? 6} />
+        </>
+      );
+    }
+
+    if (type === 'select') {
+      return (
+        <>
+          <label for={id}>{field.label}</label>
+          <select {...common}>
+            {field.placeholder && <option value="">{field.placeholder}</option>}
+            {(field.options ?? []).map((option) => (
+              <option value={option}>{option}</option>
+            ))}
+          </select>
+        </>
+      );
+    }
+
+    if (type === 'checkbox') {
+      return (
+        <label class="field-checkbox" for={id}>
+          <input type="checkbox" {...common} />
+          <span>{field.label}</span>
+        </label>
+      );
+    }
+
+    return (
+      <>
+        <label for={id}>{field.label}</label>
+        <input type={type} {...common} />
+      </>
+    );
+  })}
+
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit">{submitLabel}</button>
+  </div>
+</form>

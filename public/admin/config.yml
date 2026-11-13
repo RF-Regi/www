@@ -1,0 +1,108 @@
+# Sveltia CMS-konfigurasjon for RF-Regi (rfregi.no)
+# JSON-skjema: https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+locale: nb
+
+backend:
+  # GitHub-backend: alle med skriverettigheter til repoet kan logge inn.
+  # Nettstedet hostes på Netlify, og Sveltia bruker da Netlifys innebygde
+  # OAuth-klient automatisk (default base_url https://api.netlify.com/auth) —
+  # Netlify Identity må være aktivert på Netlify-siden (se SETUP.md).
+  # OBS: Git Gateway-backend er avviklet av Netlify og støttes ikke av Sveltia.
+  name: github
+  repo: RF-Regi/www
+  # branch er valgfri; standard er repositoriets standardgren (main).
+  # branch: main
+
+  # ALTERNATIV (vert-uavhengig, bruk hvis Netlify Identity forsvinner eller
+  # nettstedet flyttes, f.eks. til GitHub Pages): Sveltia CMS Authenticator —
+  # https://github.com/sveltia/sveltia-cms-auth deployes til Cloudflare Workers,
+  # registreres som GitHub App, og worker-URL-en settes som base_url:
+  # base_url: https://<din-authenticator-worker>.workers.dev
+
+# Medier lagres i public/images og refereres som /images/... på nettstedet.
+media_folder: public/images
+public_folder: /images
+
+# Endringer går via redigeringsarbeidsflyt (draft → in review → ready → publish)
+# i stedet for å committ'es rett til main.
+publish_mode: editorial_workflow
+
+collections:
+  # Sider: src/content/pages/*.md — brødteksten (markdown) er det implisitte
+  # siste feltet i hver oppføring og må ikke deklareres her.
+  - name: sider
+    label: Sider
+    label_singular: Side
+    folder: src/content/pages
+    extension: md
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - { label: Tittel, name: title, widget: string }
+      - { label: Teaser, name: teaser, widget: string, required: false }
+      - { label: Permalenke, name: permalink, widget: string, hint: 'F.eks. /utleie/ (må starte og slutte med skråstrek)' }
+      - label: Skjema
+        name: showForm
+        widget: select
+        options: [none, join, contact]
+        default: none
+        hint: 'Velg hvilket innsendingskjema som vises på siden'
+
+  # Styret: src/content/styret/*.md
+  - name: styret
+    label: Styret
+    label_singular: Styremedlem
+    folder: src/content/styret
+    extension: md
+    create: true
+    # Filnavnet er vervet, ikke personen: «Regiformann» forblir regiformann.md
+    # når en ny person overtar — bare Navn/E-post feltene endres.
+    identifier_field: role
+    slug: '{{role}}'
+    summary: '{{role}} – {{name}}'
+    fields:
+      - { label: Navn, name: name, widget: string }
+      - { label: Rolle, name: role, widget: string }
+      - { label: E-post, name: email, widget: string, hint: 'Allerede obfuskert (reversert) — skal ikke endres ved vervskifte' }
+      - { label: Rekkefølge, name: order, widget: number, value_type: int, min: 1, default: 99 }
+      - { label: Bilde (valgfritt), name: image, widget: image, required: false }
+
+  # Pakker: src/content/pakker/*.md — utleiepakker for lyd og lys.
+  - name: pakker
+    label: Pakker
+    label_singular: Pakke
+    folder: src/content/pakker
+    extension: md
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - label: Type
+        name: type
+        widget: select
+        options: [lyd, lys]
+      - { label: Tittel, name: title, widget: string }
+      - { label: Rekkefølge, name: order, widget: number, value_type: int, min: 1, default: 99 }
+      - label: Innholdspunkter
+        name: items
+        widget: list
+        field: { label: Punkt, name: item, widget: string }
+        required: false
+      # Brødteksten (markdown) er det implisitte siste feltet.
+
+  # Nettsted: src/data/site.yaml — Astro file()-loader krever at alle feltene
+  # ligger under rotnøkkelen `site`, derfor er de pakket inn i ett objekt-felt.
+  - name: nettsted
+    label: Nettsted
+    files:
+      - name: site
+        label: Nettstedsinformasjon
+        file: src/data/site.yaml
+        fields:
+          - label: Nettsted
+            name: site
+            widget: object
+            fields:
+              - { label: Tittel, name: title, widget: string }
+              - { label: Slagord, name: slogan, widget: string }
+              - { label: Beskrivelse, name: description, widget: text }
+              - { label: Facebook-brukernavn, name: facebook, widget: string, required: false }

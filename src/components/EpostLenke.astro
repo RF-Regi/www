@@ -1,0 +1,22 @@
+---
+/**
+ * E-postlenke obfuskert mot scrapere.
+ * `email` = lesbar adresse (komponenten reverserer), eller
+ * `encoded` = allerede reversert verdi (brukes når kildefilene lagrer
+ * e-posten obfuskert, slik at det offentlige repoet ikke er en mailliste).
+ * Statisk HTML inneholder aldri mailto: eller lesbar e-post:
+ * reversert tekst vises riktig via CSS, et lite script i Base.astro
+ * bygger mailto-adressen ved klikk.
+ */
+interface Props {
+  email?: string;
+  encoded?: string;
+  class?: string;
+}
+const { email, encoded, class: className } = Astro.props;
+const value = encoded ?? [...(email ?? '')].reverse().join('');
+---
+
+<a href="#" class={`epost-obf ${className ?? ''}`} data-epost={value} rel="nofollow">
+  <span class="epost-tekst">{value}</span>
+</a>

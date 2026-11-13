@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import NetlifyForm from '../components/NetlifyForm.astro';
+import EpostLenke from '../components/EpostLenke.astro';
+
+const styret = (await getCollection('styret')).sort((a, b) => a.data.order - b.data.order);
+
+const fields = [
+  { name: 'navn', label: 'Ditt navn', type: 'text' as const, required: true },
+  { name: 'email', label: 'Din e-post', type: 'email' as const, required: true },
+  { name: 'tekst', label: 'Hva kan vi hjelpe deg med?', type: 'textarea' as const, rows: 6 },
+];
+---
+
+<Base title="Kontakt oss" description="Kontakt RF-Regi - studentforening ved UiO med lyd, lys og scene.">
+  <PageHead
+    title="Kontakt oss"
+    teaser="Vil du komme i kontakt med oss? Bruk skjemaet eller send oss en mail."
+  />
+  <div class="page-body wrap">
+    <div class="prose">
+      <NetlifyForm name="contact" fields={fields} submitLabel="Send" />
+
+      <h2>Generell kontakt</h2>
+      <p>
+        For generelle henvendelser til styret:
+        <EpostLenke encoded="on.igerfr@tsop" />
+      </p>
+
+      <h2>Utleie</h2>
+      <p>
+        Spørsmål om utleie og lignende rettes til utleieansvarlig:
+        <EpostLenke encoded="on.igerfr@eieltu" />
+      </p>
+
+      <h2>Styret</h2>
+      <ul>
+        {
+          styret.map((person) => (
+            <li>
+              {person.data.name} – {person.data.role}:{' '}
+              <EpostLenke encoded={person.data.email} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</Base>

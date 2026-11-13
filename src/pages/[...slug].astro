@@ -1,0 +1,71 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import NetlifyForm from '../components/NetlifyForm.astro';
+
+export async function getStaticPaths() {
+  const sider = await getCollection('sider');
+  return sider.map((entry) => ({
+    params: { slug: entry.data.permalink.replace(/^\/+|\/+$/g, '') },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'sider'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+// Brødsmulesti: finn foreldresiden (neste øverste permalink) blant sidene.
+const sider = await getCollection('sider');
+const parent = sider.find(
+  (candidate) =>
+    candidate.data.permalink !== entry.data.permalink &&
+    entry.data.permalink.startsWith(candidate.data.permalink)
+);
+
+const breadcrumb = parent
+  ? [{ label: parent.data.title, url: parent.data.permalink }, { label: entry.data.title }]
+  : undefined;
+
+const joinFields = [
+  { name: 'navn', label: 'Ditt navn', type: 'text' as const, required: true },
+  { name: 'email', label: 'Din e-post', type: 'email' as const, required: true },
+  { name: 'nummer', label: 'Telefon', type: 'tel' as const },
+];
+
+const contactFields = [
+  { name: 'navn', label: 'Ditt navn', type: 'text' as const, required: true },
+  { name: 'email', label: 'Din e-post', type: 'email' as const, required: true },
+  { name: 'tekst', label: 'Hva kan vi hjelpe deg med?', type: 'textarea' as const, rows: 6 },
+];
+
+const formFields =
+  entry.data.showForm === 'join' ? joinFields : entry.data.showForm === 'contact' ? contactFields : [];
+const formName = entry.data.showForm === 'join' ? 'JoinUs' : 'contact';
+const formHeading =
+  entry.data.showForm === 'join' ? 'Bli frivillig i RF-Regi' : 'Send oss en melding';
+---
+
+<Base title={entry.data.title} description={entry.data.teaser}>
+  <PageHead title={entry.data.title} teaser={entry.data.teaser} breadcrumb={breadcrumb} />
+  <div class="page-body wrap">
+    <div class="prose">
+      <Content />
+    </div>
+    {
+      entry.data.showForm !== 'none' && (
+        <section class="section" style="padding-top: 1rem;">
+          <div class="section-head">
+            <h2>{formHeading}</h2>
+          </div>
+          <NetlifyForm name={formName} fields={formFields} submitLabel="Send" />
+        </section>
+      )
+    }
+  </div>
+</Base>
