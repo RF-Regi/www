@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import EpostLenke from './EpostLenke.astro';
+
+const styret = (await getCollection('styret')).sort((a, b) => a.data.order - b.data.order);
+const siteData = (await getCollection('nettsted'))[0]?.data;
+const siteName = siteData?.title ?? 'RF-Regi';
+const facebookUrl = siteData?.facebook ? `https://www.facebook.com/${siteData.facebook}` : null;
+const year = new Date().getFullYear();
+const path = Astro.url.pathname;
+const isActive = (url: string) => path === url || (url !== '/' && path.startsWith(url));
+
+const shortcuts = [
+  { label: 'Utleie', url: '/utleie/' },
+  { label: 'Bli frivillig', url: '/frivillig/' },
+  { label: 'Styret', url: '/om/styret/' },
+  { label: 'Kontakt oss', url: '/kontakt/' },
+];
+const leder = styret.find((s) => s.data.role.toLowerCase().includes('regiformann'))?.data.name ?? 'RF-Regi';
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h2 class="footer-heading">{siteName}</h2>
+        <p>
+          Studentforening ved Universitetet i Oslo. Vi driver med lyd, lys og scene,
+          og leier ut utstyr til studentforeninger og andre som trenger det.
+        </p>
+      </div>
+      <div>
+        <h2 class="footer-heading">Kontakt</h2>
+        <ul>
+          <li><EpostLenke encoded="on.igerfr@tsop" /></li>
+          <li><EpostLenke encoded="on.igerfr@eieltu" /></li>
+          {facebookUrl && (
+            <li>
+              <a href={facebookUrl} rel="noopener">Facebook</a>
+            </li>
+          )}
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-heading">Snarveier</h2>
+        <ul>
+          {shortcuts.map((item) => (
+            <li>
+              <a href={item.url} aria-current={isActive(item.url) ? 'page' : undefined}>{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; {year} RF-Regi</span>
+      <span>Styreleder: {leder}</span>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,70 @@
+---
+import '../styles/global.css';
+import { getCollection } from 'astro:content';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const siteData = (await getCollection('nettsted'))[0]?.data;
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = siteData?.description ??
+    'RF-Regi - studentforening ved UiO med lyd, lys og scene. Utleie av utstyr og teknikere til studentforeninger i Oslo.',
+  ogImage = '/images/banner.jpg',
+} = Astro.props;
+
+const fullTitle = title.includes('RF-Regi') ? title : `${title} - RF-Regi`;
+const site = Astro.site ?? new URL('https://rfregi.no');
+const canonical = new URL(Astro.url.pathname, site);
+const ogImageURL = new URL(ogImage, site);
+---
+
+<!doctype html>
+<html lang="nb">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0e1013" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="RF-Regi" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="nb_NO" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageURL} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Hopp til innhold</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      // Obfuskerte e-postlenker: bygger mailto-adressen ved klikk og
+      // dekoder teksten når JS kjører (statisk HTML inneholder bare reversert tekst).
+      const decode = (s) => [...s].reverse().join('');
+      document.addEventListener('click', (e) => {
+        const a = (e.target as HTMLElement).closest?.('a[data-epost]');
+        if (a) {
+          e.preventDefault();
+          location.href = 'mailto:' + decode(a.dataset.epost);
+        }
+      });
+      document.querySelectorAll('a[data-epost] .epost-tekst').forEach((el) => {
+        el.textContent = decode(el.textContent ?? '');
+        el.classList.add('epost-dekodt');
+      });
+    </script>
+  </body>
+</html>

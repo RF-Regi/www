@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+
+interface Widget {
+  title: string;
+  url: string;
+  image: string;
+  alt: string;
+  text: string;
+}
+
+// Widget-tekster er hentet ordrett fra gammel forside (widgets 1–4).
+const widgets: Widget[] = [
+  {
+    title: 'Lydutleie',
+    url: '/utleie/lydpakker/',
+    image: '/images/lyd-eksempel.jpg',
+    alt: 'Lydanlegg rigget på en scene',
+    text: 'Vi har det meste av høyttalere mikrofoner og mixere enten dere trenger utstyr til enkle oppsett som debatter, eller mere avanserte ting som revyer, konserter eller fester.',
+  },
+  {
+    title: 'Lysutleie',
+    url: '/utleie/lyspakker/',
+    image: '/images/lys-eksempel.jpg',
+    alt: 'Lysrigg med movingheads på en scene',
+    text: 'Vi har lyskontrollere, lyskastere, movingheads og strober. Trenger du lys til et arrangement har vi det du trenger.',
+  },
+  {
+    title: 'Riggere og teknikere',
+    url: '/utleie/',
+    image: '/images/geir-tek.jpg',
+    alt: 'Tekniker som jobber ved mikserpulten',
+    text: 'Trenger dere hjelp med rigging av utstyr eller avvikling av produksjonen så har vi mange flotte teknikere som gjerne tar på seg jobben med å hjelpe dere.',
+  },
+  {
+    title: 'Frivillig i RF-Regi',
+    url: '/frivillig/',
+    image: '/images/flex-i-garderobe.jpg',
+    alt: 'Frivillig i garderoben under et arrangement',
+    text: 'Ønsker å være med i en studentforening? Er du glad i lyd, lys og tekniske ting? Kanskje vi er studentforeningen du ser etter! Ønsker du mere informasjon om hvordan det er å være i RF-Regi og moderforeningen vår Realistforeningen, klikk her.',
+  },
+];
+---
+
+<Base
+  title="Velkommen til RF-Regi"
+  description="Nettside for studentforeningen RF-Regi ved Universitetet i Oslo. RF-Regi er en frivillig studentforening som driver med lyd, lys og scene. Vi har utleie av utstyr til studentforeninger og andre som måtte ha behov for det."
+>
+  <section class="hero">
+    <div class="wrap">
+      <p class="hero-kicker">Studentforening ved UiO · Lyd, lys og scene</p>
+      <h1>Velkommen til RF-Regi</h1>
+      <p>
+        RF-Regi er en frivillig studentforening ved Universitetet i Oslo som driver med lyd, lys og
+        scene. Vi leier ut utstyr og teknikere til studentforeninger og andre som måtte ha behov for
+        det.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/utleie/">Se utleie</a>
+        <a class="btn btn-ghost" href="/frivillig/">Bli frivillig</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Hva kan vi hjelpe deg med?</h2>
+      </div>
+      <div class="card-grid">
+        {
+          widgets.map((widget) => (
+            <a
+              class="card"
+              href={widget.url}
+              style="color: inherit; text-decoration: none;"
+            >
+              <img class="card-img" src={widget.image} alt={widget.alt} loading="lazy" />
+              <div class="card-body">
+                <h3>{widget.title}</h3>
+                <p>{widget.text}</p>
+                <span class="card-link">Les mer</span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,18 @@
+# Netlify-konfigurasjon for rfregi.no (Astro)
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Admin-grensesnittet (Sveltia CMS) ligger i public/admin og kopieres til
+# dist/admin av Astro-bygget. Nettlify serverer statiske filer før redirects,
+# så /admin/index.html og /admin/config.yml lastes som filer; regelen under
+# fanger bare dype lenker (og sikrer at /admin/ uten index-oppløsning også
+# serverer admin-grensesnittet rent).
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200

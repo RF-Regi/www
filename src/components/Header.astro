@@ -1,0 +1,80 @@
+---
+const path = Astro.url.pathname;
+const isActive = (url: string) => path === url || (url !== '/' && path.startsWith(url));
+
+const nav = [
+  {
+    label: 'Utleie',
+    url: '/utleie/',
+    children: [
+      { label: 'Lydpakker', url: '/utleie/lydpakker/' },
+      { label: 'Lyspakker', url: '/utleie/lyspakker/' },
+      { label: 'Scene og teknisk', url: '/utleie/scene-teknisk/' },
+      { label: 'Utleiebetingelser', url: '/utleie/utleiebetingelser/' },
+    ],
+  },
+  {
+    label: 'Frivillig',
+    url: '/frivillig/',
+    children: [
+      { label: 'Verv', url: '/frivillig/verv/' },
+      { label: 'Bli med', url: '/frivillig/blimed/' },
+    ],
+  },
+  {
+    label: 'Om oss',
+    url: '/om/',
+    children: [{ label: 'Styret', url: '/om/styret/' }],
+  },
+  { label: 'Kontakt oss', url: '/kontakt/' },
+];
+---
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/" aria-current={path === '/' ? 'page' : undefined}>
+      <span class="brand-mark">RF</span> RF-Regi
+    </a>
+
+    <nav class="main-nav" aria-label="Hovedmeny">
+      {nav.map((item) => (
+        <details class="nav-item" name="hovedmeny">
+          <summary class="nav-link" aria-current={isActive(item.url) ? 'page' : undefined}>
+            {item.label}
+          </summary>
+          <div class="nav-dropdown">
+            <a href={item.url} aria-current={isActive(item.url) ? 'page' : undefined}>Oversikt</a>
+            {item.children?.map((child) => (
+              <a href={child.url} aria-current={isActive(child.url) ? 'page' : undefined}>
+                {child.label}
+              </a>
+            ))}
+          </div>
+        </details>
+      ))}
+    </nav>
+
+    <details class="mobile-toggle">
+      <summary aria-label="Meny">Meny</summary>
+      <nav class="mobile-nav" aria-label="Mobilmeny">
+        {nav.map((item) =>
+          item.children ? (
+            <details>
+              <summary aria-current={isActive(item.url) ? 'page' : undefined}>{item.label}</summary>
+              <a href={item.url} aria-current={isActive(item.url) ? 'page' : undefined}>Oversikt</a>
+              {item.children.map((child) => (
+                <a href={child.url} aria-current={isActive(child.url) ? 'page' : undefined}>
+                  {child.label}
+                </a>
+              ))}
+            </details>
+          ) : (
+            <a href={item.url} aria-current={isActive(item.url) ? 'page' : undefined}>
+              {item.label}
+            </a>
+          )
+        )}
+      </nav>
+    </details>
+  </div>
+</header>

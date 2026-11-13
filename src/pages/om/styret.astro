@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import EpostLenke from '../../components/EpostLenke.astro';
+
+const styret = (await getCollection('styret')).sort((a, b) => a.data.order - b.data.order);
+const personer = styret.filter((person) => person.data.role.toLowerCase() !== 'generell kontakt');
+
+function initials(name: string): string {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]!.toUpperCase())
+    .join('');
+}
+---
+
+<Base title="Styret" description="Styret i RF-Regi - studentforening ved UiO med lyd, lys og scene.">
+  <PageHead
+    title="Styret"
+    teaser="Her finner du styret i RF-Regi og hvordan du kommer i kontakt med oss."
+    breadcrumb={[{ label: 'Om Oss', url: '/om/' }, { label: 'Styret' }]}
+  />
+  <div class="page-body wrap">
+    <div class="person-grid">
+      {
+        personer.map((person) => (
+          <article class="person">
+            <div class="avatar" aria-hidden="true">
+              {person.data.image ? (
+                <img src={person.data.image} alt="" loading="lazy" />
+              ) : (
+                initials(person.data.name)
+              )}
+            </div>
+            <h2>{person.data.name}</h2>
+            <p class="role">{person.data.role}</p>
+            <EpostLenke encoded={person.data.email} class="mail" />
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</Base>

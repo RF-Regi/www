@@ -1,0 +1,43 @@
+---
+/**
+ * PageHead — reusable page header for subpages.
+ * Renders an optional breadcrumb (Hjem is prepended automatically),
+ * an h1 and an optional teaser paragraph.
+ */
+interface Crumb {
+  label: string;
+  url?: string;
+}
+
+interface Props {
+  title: string;
+  teaser?: string;
+  breadcrumb?: Crumb[];
+}
+
+const { title, teaser, breadcrumb = [] } = Astro.props;
+---
+
+<div class="page-head wrap">
+  {breadcrumb.length > 0 && (
+    <nav class="breadcrumb" aria-label="Brødsmulesti">
+      <ol class="breadcrumb-list">
+        <li><a href="/">Hjem</a></li>
+        {breadcrumb.map((crumb, index) => {
+          const last = index === breadcrumb.length - 1;
+          return (
+            <li>
+              {crumb.url && !last ? (
+                <a href={crumb.url}>{crumb.label}</a>
+              ) : (
+                <span aria-current={last ? 'page' : undefined}>{crumb.label}</span>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+  )}
+  <h1>{title}</h1>
+  {teaser && <p class="teaser">{teaser}</p>}
+</div>

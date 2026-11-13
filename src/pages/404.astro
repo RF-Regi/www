@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+---
+
+<Base title="Oops! Her finnes det ikke noe!" description="Siden du lette etter finnes ikke på rfregi.no.">
+  <PageHead
+    title="Oops! Her finnes det ikke noe!"
+    teaser="Kanskje siden har blitt flyttet eller slettet? Eller kanskje du bare tastet feil?"
+  />
+  <div class="page-body wrap">
+    <div class="prose">
+      <h2>No problem!</h2>
+      <p>
+        Prøv …<br />
+        … å starte på <a href="/">forsiden</a>;<br />
+        Hvis du ikke finner siden du leter etter, <a href="/kontakt/">spør oss</a>.
+      </p>
+    </div>
+  </div>
+</Base>
