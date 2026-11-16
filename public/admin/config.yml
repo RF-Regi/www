@@ -9,6 +9,8 @@ backend:
   # Netlify Identity må være aktivert på Netlify-siden 
   name: github
   repo: RF-Regi/www
+  # Midertidig for test av branch
+  branch: rebuild-astro  
   # Gjør CMS-innlogging mulig også fra deploy previews og andre URL-er som
   # ikke er registrert hos OAuth-klienten (Netlify kjenner bare hoveddomenet).
   site_domain: rfregi.no
