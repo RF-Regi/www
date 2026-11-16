@@ -107,6 +107,7 @@ summary.nav-link::after {
 .nav-link:hover { background: var(--surface-2); text-decoration: none; }
 .nav-item[open] .nav-link,
 .nav-link[aria-current='page'] { color: var(--accent); }
+.nav-link--plain { cursor: pointer; }
 .nav-item[open] .nav-link[aria-current='page'],
 .nav-link[aria-current='page'] { background: var(--accent-soft); }
 .nav-dropdown {
@@ -260,6 +261,13 @@ summary.nav-link::after {
 .prose hr { border: 0; border-top: 1px solid var(--border); margin: 2.2rem 0; }
 .prose iframe { max-width: 100%; border: 0; border-radius: var(--radius-sm); }
 .prose strong { color: var(--text); }
+.prose img {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  margin-block: 0.8rem;
+}
+.prose h3 a { color: var(--text); text-decoration: none; }
+.prose h3 a:hover { color: var(--accent); }
 
 /* ---------- Board grid ---------- */
 .person-grid {

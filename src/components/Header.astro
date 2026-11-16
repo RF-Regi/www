@@ -37,21 +37,31 @@ const nav = [
     </a>
 
     <nav class="main-nav" aria-label="Hovedmeny">
-      {nav.map((item) => (
-        <details class="nav-item" name="hovedmeny">
-          <summary class="nav-link" aria-current={isActive(item.url) ? 'page' : undefined}>
+      {nav.map((item) =>
+        item.children ? (
+          <details class="nav-item" name="hovedmeny">
+            <summary class="nav-link" aria-current={isActive(item.url) ? 'page' : undefined}>
+              {item.label}
+            </summary>
+            <div class="nav-dropdown">
+              <a href={item.url} aria-current={isActive(item.url) ? 'page' : undefined}>Oversikt</a>
+              {item.children.map((child) => (
+                <a href={child.url} aria-current={isActive(child.url) ? 'page' : undefined}>
+                  {child.label}
+                </a>
+              ))}
+            </div>
+          </details>
+        ) : (
+          <a
+            class="nav-link nav-link--plain"
+            href={item.url}
+            aria-current={isActive(item.url) ? 'page' : undefined}
+          >
             {item.label}
-          </summary>
-          <div class="nav-dropdown">
-            <a href={item.url} aria-current={isActive(item.url) ? 'page' : undefined}>Oversikt</a>
-            {item.children?.map((child) => (
-              <a href={child.url} aria-current={isActive(child.url) ? 'page' : undefined}>
-                {child.label}
-              </a>
-            ))}
-          </div>
-        </details>
-      ))}
+          </a>
+        )
+      )}
     </nav>
 
     <details class="mobile-toggle">
