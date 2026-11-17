@@ -1,13 +1,13 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
+
+const nf = (await getCollection('undersider'))[0]?.data?.ikke_funnet;
 ---
 
-<Base title="Oops! Her finnes det ikke noe!" description="Siden du lette etter finnes ikke på rfregi.no.">
-  <PageHead
-    title="Oops! Her finnes det ikke noe!"
-    teaser="Kanskje siden har blitt flyttet eller slettet? Eller kanskje du bare tastet feil?"
-  />
+<Base title={nf?.title ?? 'Oops! Her finnes det ikke noe!'} description={nf?.teaser ?? 'Siden du lette etter finnes ikke på rfregi.no.'}>
+  <PageHead title={nf?.title} teaser={nf?.teaser} />
   <div class="page-body wrap">
     <div class="prose">
       <h2>No problem!</h2>

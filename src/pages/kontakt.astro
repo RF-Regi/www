@@ -5,6 +5,16 @@ import PageHead from '../components/PageHead.astro';
 import NetlifyForm from '../components/NetlifyForm.astro';
 import EpostLenke from '../components/EpostLenke.astro';
 
+const u = (await getCollection('undersider'))[0]?.data?.kontakt;
+const k = {
+  title: u?.title ?? 'Kontakt oss',
+  teaser: u?.teaser ?? 'Vil du komme i kontakt med oss? Bruk skjemaet eller send oss en mail.',
+  generellTittel: u?.generell_tittel ?? 'Generell kontakt',
+  generellTekst: u?.generell_tekst ?? '{k.generellTekst}',
+  utleieTittel: u?.utleie_tittel ?? 'Utleie',
+  utleieTekst: u?.utleie_tekst ?? '{k.utleieTekst}',
+};
+
 const styret = (await getCollection('styret')).sort((a, b) => a.data.order - b.data.order);
 
 const fields = [
@@ -14,24 +24,21 @@ const fields = [
 ];
 ---
 
-<Base title="Kontakt oss" description="Kontakt RF-Regi - studentforening ved UiO med lyd, lys og scene.">
-  <PageHead
-    title="Kontakt oss"
-    teaser="Vil du komme i kontakt med oss? Bruk skjemaet eller send oss en mail."
-  />
+<Base title={k.title} description={k.teaser}>
+  <PageHead title={k.title} teaser={k.teaser} />
   <div class="page-body wrap">
     <div class="prose">
       <NetlifyForm name="contact" fields={fields} submitLabel="Send" />
 
-      <h2>Generell kontakt</h2>
+      <h2>{k.generellTittel}</h2>
       <p>
-        For generelle henvendelser til styret:
+        {k.generellTekst}
         <EpostLenke encoded="on.igerfr@tsop" />
       </p>
 
-      <h2>Utleie</h2>
+      <h2>{k.utleieTittel}</h2>
       <p>
-        Spørsmål om utleie og lignende rettes til utleieansvarlig:
+        {k.utleieTekst}
         <EpostLenke encoded="on.igerfr@eieltu" />
       </p>
 

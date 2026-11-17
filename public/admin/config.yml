@@ -10,7 +10,7 @@ backend:
   name: github
   repo: RF-Regi/www
   # Midertidig for test av branch
-  branch: rebuild-astro  
+  branch: rebuild-astro
   # Gjør CMS-innlogging mulig også fra deploy previews og andre URL-er som
   # ikke er registrert hos OAuth-klienten (Netlify kjenner bare hoveddomenet).
   site_domain: rfregi.no
@@ -32,8 +32,8 @@ public_folder: /images
 publish_mode: editorial_workflow
 
 collections:
-  # Sider: src/content/pages/*.md — brødteksten (markdown) er det implisitte
-  # siste feltet i hver oppføring og må ikke deklareres her.
+  # Sider: src/content/pages/*.md — «Innhold»-feltet (navn: body) er brødteksten
+  # og lagres under frontmatter av Sveltia.
   - name: sider
     label: Sider
     label_singular: Side
@@ -51,6 +51,9 @@ collections:
         options: [none, join, contact]
         default: none
         hint: 'Velg hvilket innsendingskjema som vises på siden'
+      # Sveltia krever at brødteksten er deklarert som felt med navnet «body» —
+      # den lagres da under frontmatter (ikke i den), og leses fra eksisterende filer.
+      - { label: Innhold, name: body, widget: markdown, required: false }
 
   # Styret: src/content/styret/*.md
   - name: styret
@@ -86,15 +89,19 @@ collections:
         options: [lyd, lys]
       - { label: Tittel, name: title, widget: string }
       - { label: Rekkefølge, name: order, widget: number, value_type: int, min: 1, default: 99 }
+      - { label: Ledetekst for utstyrslisten (valgfritt), name: items_label, widget: string, required: false, default: 'I pakken:' }
       - label: Innholdspunkter
         name: items
         widget: list
         field: { label: Punkt, name: item, widget: string }
         required: false
-      # Brødteksten (markdown) er det implisitte siste feltet.
+        hint: 'Lenker kan skrives som [tekst](url) — pakkenes utstyrsliste. Teksten vises som avkryssingspunkter på siden.'
+      # Sveltia: brødteksten må deklareres som «body»-felt (lagres under frontmatter).
+      - { label: Beskrivelse, name: body, widget: markdown, required: false }
 
-  # Nettsted: src/data/site.yaml — Astro file()-loader krever at alle feltene
-  # ligger under rotnøkkelen `site`, derfor er de pakket inn i ett objekt-felt.
+  # Nettsted: src/data/*.yaml — Astro file()-loader krever at alle feltene
+  # ligger under filens rotnøkkel (site/forside/meny/undersider), derfor er de
+  # pakket inn i ett objekt-felt per fil.
   - name: nettsted
     label: Nettsted
     files:
@@ -110,3 +117,104 @@ collections:
               - { label: Slagord, name: slogan, widget: string }
               - { label: Beskrivelse, name: description, widget: text }
               - { label: Facebook-brukernavn, name: facebook, widget: string, required: false }
+              - { label: Bunntekst-tekst, name: footer_text, widget: text, required: false }
+      - name: forside
+        label: Forsiden
+        file: src/data/forside.yaml
+        fields:
+          - label: Forsiden
+            name: forside
+            widget: object
+            fields:
+              - label: Hero
+                name: hero
+                widget: object
+                fields:
+                  - { label: Overoverskrift, name: kicker, widget: string }
+                  - { label: Tittel, name: title, widget: string }
+                  - { label: Introtekst, name: intro, widget: text }
+                  - label: Hovedknapp
+                    name: cta_primary
+                    widget: object
+                    fields:
+                      - { label: Tekst, name: label, widget: string }
+                      - { label: Lenke, name: url, widget: string }
+                  - label: Sekundærknapp
+                    name: cta_secondary
+                    widget: object
+                    fields:
+                      - { label: Tekst, name: label, widget: string }
+                      - { label: Lenke, name: url, widget: string }
+              - { label: Seksjonstittel, name: section_title, widget: string }
+              - label: Kort
+                name: cards
+                widget: list
+                fields:
+                  - { label: Tittel, name: title, widget: string }
+                  - { label: Tekst, name: text, widget: text }
+                  - { label: Lenke, name: url, widget: string }
+                  - { label: Bilde, name: image, widget: image }
+                  - { label: Alt-tekst, name: alt, widget: string }
+      - name: meny
+        label: Meny
+        file: src/data/meny.yaml
+        fields:
+          - label: Meny
+            name: meny
+            widget: object
+            fields:
+              - label: Menypunkter
+                name: items
+                widget: list
+                fields:
+                  - { label: Tekst, name: label, widget: string }
+                  - { label: Lenke, name: url, widget: string }
+                  - label: Undermeny (valgfritt)
+                    name: children
+                    widget: list
+                    required: false
+                    fields:
+                      - { label: Tekst, name: label, widget: string }
+                      - { label: Lenke, name: url, widget: string }
+      - name: undersider
+        label: Sidetekster
+        file: src/data/undersider.yaml
+        fields:
+          - label: Sidetekster
+            name: undersider
+            widget: object
+            fields:
+              - label: Styret-siden
+                name: styret
+                widget: object
+                fields:
+                  - { label: Tittel, name: title, widget: string }
+                  - { label: Undertekst, name: teaser, widget: text }
+              - label: Lydpakker-siden
+                name: lydpakker
+                widget: object
+                fields:
+                  - { label: Tittel, name: title, widget: string }
+                  - { label: Undertekst, name: teaser, widget: text }
+              - label: Lyspakker-siden
+                name: lyspakker
+                widget: object
+                fields:
+                  - { label: Tittel, name: title, widget: string }
+                  - { label: Undertekst, name: teaser, widget: text }
+              - label: Kontakt-siden
+                name: kontakt
+                widget: object
+                fields:
+                  - { label: Tittel, name: title, widget: string }
+                  - { label: Undertekst, name: teaser, widget: text }
+                  - { label: Tittel «Generell kontakt», name: generell_tittel, widget: string }
+                  - { label: Tekst «Generell kontakt», name: generell_tekst, widget: string }
+                  - { label: Tittel «Utleie», name: utleie_tittel, widget: string }
+                  - { label: Tekst «Utleie», name: utleie_tekst, widget: string }
+              - label: 404-siden
+                name: ikke_funnet
+                widget: object
+                fields:
+                  - { label: Tittel, name: title, widget: string }
+                  - { label: Undertekst, name: teaser, widget: text }

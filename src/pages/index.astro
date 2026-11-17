@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 
 interface Widget {
@@ -9,55 +10,48 @@ interface Widget {
   text: string;
 }
 
-// Widget-tekster er hentet ordrett fra gammel forside (widgets 1–4).
-const widgets: Widget[] = [
-  {
-    title: 'Lydutleie',
-    url: '/utleie/lydpakker/',
-    image: '/images/lyd-eksempel.jpg',
-    alt: 'Lydanlegg rigget på en scene',
-    text: 'Vi har det meste av høyttalere mikrofoner og mixere enten dere trenger utstyr til enkle oppsett som debatter, eller mere avanserte ting som revyer, konserter eller fester.',
+// Alt innhold på forsiden kommer fra src/data/forside.yaml (CMS: Nettsted → Forsiden).
+// Fallback-verdiene under brukes bare hvis yaml-filen mangler felt.
+const f = (await getCollection('forside'))[0]?.data;
+const site = (await getCollection('nettsted'))[0]?.data?.site;
+
+const hero = {
+  kicker: f?.hero?.kicker ?? 'Studentforening ved UiO · Lyd, lys og scene',
+  title: f?.hero?.title ?? 'Velkommen til RF-Regi',
+  intro:
+    f?.hero?.intro ??
+    'RF-Regi er en frivillig studentforening ved Universitetet i Oslo som driver med lyd, lys og scene. Vi leier ut utstyr og teknikere til studentforeninger og andre som måtte ha behov for det.',
+  ctaPrimary: {
+    label: f?.hero?.cta_primary?.label ?? 'Se utleie',
+    url: f?.hero?.cta_primary?.url ?? '/utleie/',
   },
-  {
-    title: 'Lysutleie',
-    url: '/utleie/lyspakker/',
-    image: '/images/lys-eksempel.jpg',
-    alt: 'Lysrigg med movingheads på en scene',
-    text: 'Vi har lyskontrollere, lyskastere, movingheads og strober. Trenger du lys til et arrangement har vi det du trenger.',
+  ctaSecondary: {
+    label: f?.hero?.cta_secondary?.label ?? 'Bli frivillig',
+    url: f?.hero?.cta_secondary?.url ?? '/frivillig/',
   },
-  {
-    title: 'Riggere og teknikere',
-    url: '/utleie/',
-    image: '/images/geir-tek.jpg',
-    alt: 'Tekniker som jobber ved mikserpulten',
-    text: 'Trenger dere hjelp med rigging av utstyr eller avvikling av produksjonen så har vi mange flotte teknikere som gjerne tar på seg jobben med å hjelpe dere.',
-  },
-  {
-    title: 'Frivillig i RF-Regi',
-    url: '/frivillig/',
-    image: '/images/flex-i-garderobe.jpg',
-    alt: 'Frivillig i garderoben under et arrangement',
-    text: 'Ønsker å være med i en studentforening? Er du glad i lyd, lys og tekniske ting? Kanskje vi er studentforeningen du ser etter! Ønsker du mere informasjon om hvordan det er å være i RF-Regi og moderforeningen vår Realistforeningen, klikk her.',
-  },
-];
+};
+
+const widgets: Widget[] = (f?.cards ?? []).map((card) => ({
+  title: card.title,
+  url: card.url,
+  image: card.image,
+  alt: card.alt,
+  text: card.text,
+}));
 ---
 
 <Base
-  title="Velkommen til RF-Regi"
-  description="Nettside for studentforeningen RF-Regi ved Universitetet i Oslo. RF-Regi er en frivillig studentforening som driver med lyd, lys og scene. Vi har utleie av utstyr til studentforeninger og andre som måtte ha behov for det."
+  title={hero.title}
+  description={site?.description ?? 'Nettside for studentforeningen RF-Regi ved Universitetet i Oslo.'}
 >
   <section class="hero">
     <div class="wrap">
-      <p class="hero-kicker">Studentforening ved UiO · Lyd, lys og scene</p>
-      <h1>Velkommen til RF-Regi</h1>
-      <p>
-        RF-Regi er en frivillig studentforening ved Universitetet i Oslo som driver med lyd, lys og
-        scene. Vi leier ut utstyr og teknikere til studentforeninger og andre som måtte ha behov for
-        det.
-      </p>
+      <p class="hero-kicker">{hero.kicker}</p>
+      <h1>{hero.title}</h1>
+      <p>{hero.intro}</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="/utleie/">Se utleie</a>
-        <a class="btn btn-ghost" href="/frivillig/">Bli frivillig</a>
+        <a class="btn btn-primary" href={hero.ctaPrimary.url}>{hero.ctaPrimary.label}</a>
+        <a class="btn btn-ghost" href={hero.ctaSecondary.url}>{hero.ctaSecondary.label}</a>
       </div>
     </div>
   </section>
@@ -65,7 +59,7 @@ const widgets: Widget[] = [
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <h2>Hva kan vi hjelpe deg med?</h2>
+        <h2>{f?.section_title ?? 'Hva kan vi hjelpe deg med?'}</h2>
       </div>
       <div class="card-grid">
         {

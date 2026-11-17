@@ -299,6 +299,7 @@ summary.nav-link::after {
 }
 .pakke h2 { margin-top: 0; font-size: 1.35rem; letter-spacing: -0.02em; }
 .pakke .pakke-body :is(p, ul, li) { color: #c6ccd8; }
+.pakke-items-label { margin: 1rem 0 0.2rem; font-weight: 700; color: var(--text); }
 .pakke-items {
   margin: 1rem 0 0; padding: 0; list-style: none;
   display: grid; gap: 0.45rem;

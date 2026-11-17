@@ -1,8 +1,18 @@
 ---
+import { getCollection } from 'astro:content';
+
 const path = Astro.url.pathname;
 const isActive = (url: string) => path === url || (url !== '/' && path.startsWith(url));
 
-const nav = [
+interface NavItem {
+  label: string;
+  url: string;
+  children?: { label: string; url: string }[];
+}
+
+// Menyen kommer fra src/data/meny.yaml (CMS: Nettsted → Meny).
+const menyData = (await getCollection('meny'))[0]?.data?.items;
+const nav: NavItem[] = menyData ?? [
   {
     label: 'Utleie',
     url: '/utleie/',

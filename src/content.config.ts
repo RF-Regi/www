@@ -30,6 +30,7 @@ const pakker = defineCollection({
     order: z.number().default(99),
     image: z.string().optional(),
     items: z.array(z.string()).optional(),
+    items_label: z.string().optional(),
   }),
 });
 
@@ -40,7 +41,66 @@ const nettsted = defineCollection({
     slogan: z.string(),
     description: z.string(),
     facebook: z.string().optional(),
+    footer_text: z.string().optional(),
   }),
 });
 
-export const collections = { sider, styret, pakker, nettsted };
+const lenke = z.object({ label: z.string(), url: z.string() });
+
+const forside = defineCollection({
+  loader: file('./src/data/forside.yaml'),
+  schema: z.object({
+    hero: z.object({
+      kicker: z.string(),
+      title: z.string(),
+      intro: z.string(),
+      cta_primary: lenke,
+      cta_secondary: lenke,
+    }),
+    section_title: z.string(),
+    cards: z.array(
+      z.object({
+        title: z.string(),
+        url: z.string(),
+        image: z.string(),
+        alt: z.string(),
+        text: z.string(),
+      }),
+    ),
+  }),
+});
+
+const meny = defineCollection({
+  loader: file('./src/data/meny.yaml'),
+  schema: z.object({
+    items: z.array(
+      z.object({
+        label: z.string(),
+        url: z.string(),
+        children: z.array(lenke).optional(),
+      }),
+    ),
+  }),
+});
+
+const sidetekst = z.object({ title: z.string(), teaser: z.string() });
+
+const undersider = defineCollection({
+  loader: file('./src/data/undersider.yaml'),
+  schema: z.object({
+    styret: sidetekst,
+    lydpakker: sidetekst,
+    lyspakker: sidetekst,
+    kontakt: z.object({
+      title: z.string(),
+      teaser: z.string(),
+      generell_tittel: z.string(),
+      generell_tekst: z.string(),
+      utleie_tittel: z.string(),
+      utleie_tekst: z.string(),
+    }),
+    ikke_funnet: sidetekst,
+  }),
+});
+
+export const collections = { sider, styret, pakker, nettsted, forside, meny, undersider };

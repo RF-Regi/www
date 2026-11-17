@@ -4,6 +4,8 @@ import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
 import EpostLenke from '../../components/EpostLenke.astro';
 
+const u = (await getCollection('undersider'))[0]?.data?.styret;
+
 const styret = (await getCollection('styret')).sort((a, b) => a.data.order - b.data.order);
 const personer = styret.filter((person) => person.data.role.toLowerCase() !== 'generell kontakt');
 
@@ -17,10 +19,10 @@ function initials(name: string): string {
 }
 ---
 
-<Base title="Styret" description="Styret i RF-Regi - studentforening ved UiO med lyd, lys og scene.">
+<Base title={u?.title ?? 'Styret'} description={u?.teaser ?? 'Styret i RF-Regi'}>
   <PageHead
-    title="Styret"
-    teaser="Her finner du styret i RF-Regi og hvordan du kommer i kontakt med oss."
+    title={u?.title ?? 'Styret'}
+    teaser={u?.teaser ?? 'Her finner du styret i RF-Regi og hvordan du kommer i kontakt med oss.'}
     breadcrumb={[{ label: 'Om Oss', url: '/om/' }, { label: 'Styret' }]}
   />
   <div class="page-body wrap">

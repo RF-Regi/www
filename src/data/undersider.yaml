@@ -1,0 +1,20 @@
+undersider:
+  styret:
+    title: 'Styret'
+    teaser: 'Møt folket bak lyden, lyset og scena i RF-Regi.'
+  lydpakker:
+    title: 'Lydpakker'
+    teaser: 'Her vil du finne et grovt utvalg av lydpakkene våre, de kan selvfølgelig tilpasses deres behov, ta kontakt for tilbud'
+  lyspakker:
+    title: 'Lyspakker'
+    teaser: 'Her vil du finne et grovt utvalg av lyspakkene våre, de kan selvfølgelig tilpasses deres behov, ta kontakt for tilbud'
+  kontakt:
+    title: 'Kontakt oss'
+    teaser: 'Vil du komme i kontakt med oss? Bruk skjemaet eller send oss en mail.'
+    generell_tittel: 'Generell kontakt'
+    generell_tekst: 'For generelle henvendelser til styret:'
+    utleie_tittel: 'Utleie'
+    utleie_tekst: 'Spørsmål om utleie og lignende rettes til utleieansvarlig:'
+  ikke_funnet:
+    title: 'Oops! Her finnes det ikke noe!'
+    teaser: 'Kanskje siden har blitt flyttet eller slettet? Eller kanskje du bare tastet feil?'

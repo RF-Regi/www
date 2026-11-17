@@ -4,16 +4,18 @@ import EpostLenke from './EpostLenke.astro';
 
 const styret = (await getCollection('styret')).sort((a, b) => a.data.order - b.data.order);
 const siteData = (await getCollection('nettsted'))[0]?.data;
+const menyData = (await getCollection('meny'))[0]?.data;
 const siteName = siteData?.title ?? 'RF-Regi';
+const footerText = siteData?.footer_text ?? 'Studentforening ved Universitetet i Oslo. Vi driver med lyd, lys og scene, og leier ut utstyr til studentforeninger og andre som trenger det.';
 const facebookUrl = siteData?.facebook ? `https://www.facebook.com/${siteData.facebook}` : null;
 const year = new Date().getFullYear();
 const path = Astro.url.pathname;
 const isActive = (url: string) => path === url || (url !== '/' && path.startsWith(url));
 
-const shortcuts = [
+const shortcuts = menyData?.items?.map((item) => ({ label: item.label, url: item.url })) ?? [
   { label: 'Utleie', url: '/utleie/' },
-  { label: 'Bli frivillig', url: '/frivillig/' },
-  { label: 'Styret', url: '/om/styret/' },
+  { label: 'Frivillig', url: '/frivillig/' },
+  { label: 'Om oss', url: '/om/' },
   { label: 'Kontakt oss', url: '/kontakt/' },
 ];
 const leder = styret.find((s) => s.data.role.toLowerCase().includes('regiformann'))?.data.name ?? 'RF-Regi';
@@ -25,8 +27,7 @@ const leder = styret.find((s) => s.data.role.toLowerCase().includes('regiformann
       <div>
         <h2 class="footer-heading">{siteName}</h2>
         <p>
-          Studentforening ved Universitetet i Oslo. Vi driver med lyd, lys og scene,
-          og leier ut utstyr til studentforeninger og andre som trenger det.
+          {footerText}
         </p>
       </div>
       <div>
