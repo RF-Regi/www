@@ -1,6 +1,6 @@
 /* ============================================================
    RF-Regi design system — modern dark theme
-   Tokens: bg #0e1013 · surface #191d24 · accent #fabb00 ·
+   Tokens: bg #0e1013 · surface #191d24 · accent #2fbf71 ·
    violet #7c5cff · radius 14px
    ============================================================ */
 
@@ -12,10 +12,10 @@
   --border: #2a303b;
   --text: #e9ecf2;
   --muted: #9aa4b2;
-  --accent: #fabb00;
-  --accent-hover: #ffc61f;
-  --accent-ink: #16130a;
-  --accent-soft: rgba(250, 187, 0, 0.12);
+  --accent: #2fbf71;
+  --accent-hover: #3dd17f;
+  --accent-ink: #0d1a12;
+  --accent-soft: rgba(47, 191, 113, 0.12);
   --violet: #7c5cff;
   --radius: 14px;
   --radius-sm: 9px;
@@ -42,6 +42,11 @@ img { max-width: 100%; height: auto; display: block; }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 ::selection { background: var(--accent); color: var(--accent-ink); }
+/* Dark-theme scrollbar (avoids the default light-gray bar) */
+* { scrollbar-color: #3a4150 transparent; scrollbar-width: thin; }
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb { background: #3a4150; border-radius: 6px; }
+*::-webkit-scrollbar-track { background: transparent; }
 
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -82,7 +87,7 @@ a:hover { text-decoration: underline; }
 .brand[aria-current='page'] { color: var(--text); }
 .brand-mark {
   width: 2rem; height: 2rem; border-radius: 8px; flex: none;
-  background: linear-gradient(135deg, var(--accent), #ff8a00);
+  background: linear-gradient(135deg, var(--accent), #157a45);
   color: var(--accent-ink); display: grid; place-items: center;
   font-size: 0.95rem; font-weight: 900;
 }
@@ -163,7 +168,7 @@ summary.nav-link::after {
   padding-block: 4.5rem 3.5rem;
   background:
     radial-gradient(60rem 24rem at 15% -10%, rgba(250, 187, 0, 0.16), transparent 60%),
-    radial-gradient(50rem 22rem at 90% 0%, rgba(124, 92, 255, 0.16), transparent 60%),
+    radial-gradient(50rem 22rem at 90% 0%, rgba(47, 191, 113, 0.14), transparent 60%),
     var(--bg);
 }
 .hero-kicker {
@@ -203,7 +208,10 @@ summary.nav-link::after {
 
 .card-grid {
   display: grid; gap: 1.2rem;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
 }
 .card {
   background: var(--surface); border: 1px solid var(--border);
@@ -281,7 +289,7 @@ summary.nav-link::after {
 }
 .avatar {
   width: 3.6rem; height: 3.6rem; border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-soft), rgba(124, 92, 255, 0.25));
+  background: linear-gradient(135deg, var(--accent-soft), rgba(21, 122, 69, 0.35));
   border: 1px solid var(--border);
   display: grid; place-items: center;
   font-weight: 800; color: var(--accent); font-size: 1.05rem; margin-bottom: 0.6rem;

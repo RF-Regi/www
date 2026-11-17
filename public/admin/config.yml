@@ -6,11 +6,9 @@ backend:
   # GitHub-backend: alle med skriverettigheter til repoet kan logge inn.
   # Nettstedet hostes på Netlify, og Sveltia bruker da Netlifys innebygde
   # OAuth-klient automatisk (default base_url https://api.netlify.com/auth) —
-  # Netlify Identity må være aktivert på Netlify-siden 
+  # Netlify Identity må være aktivert på Netlify-siden
   name: github
   repo: RF-Regi/www
-  # Midertidig for test av branch
-  branch: rebuild-astro
   # Gjør CMS-innlogging mulig også fra deploy previews og andre URL-er som
   # ikke er registrert hos OAuth-klienten (Netlify kjenner bare hoveddomenet).
   site_domain: rfregi.no
