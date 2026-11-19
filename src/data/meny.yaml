@@ -16,5 +16,6 @@ meny:
       url: '/om/'
       children:
         - { label: 'Styret', url: '/om/styret/' }
+        - { label: 'Generalforsamling', url: '/om/generalforsamling/' }
     - label: 'Kontakt oss'
       url: '/kontakt/'

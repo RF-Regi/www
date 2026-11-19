@@ -18,6 +18,7 @@ const shortcuts = menyData?.items?.map((item) => ({ label: item.label, url: item
   { label: 'Om oss', url: '/om/' },
   { label: 'Kontakt oss', url: '/kontakt/' },
 ];
+const leder = styret.find((s) => s.data.role.toLowerCase().includes('regiformann'))?.data.name ?? 'RF-Regi';
 ---
 
 <footer class="site-footer">
@@ -54,6 +55,7 @@ const shortcuts = menyData?.items?.map((item) => ({ label: item.label, url: item
     </div>
     <div class="footer-bottom">
       <span>&copy; {year} RF-Regi</span>
+      <span>Styreleder: {leder}</span>
     </div>
   </div>
 </footer>

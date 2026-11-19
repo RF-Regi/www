@@ -277,6 +277,21 @@ summary.nav-link::after {
 .prose h3 a { color: var(--text); text-decoration: none; }
 .prose h3 a:hover { color: var(--accent); }
 
+/* ---------- Dokumentlister (generalforsamling) ---------- */
+.dok-liste { list-style: none; padding: 0; margin: 0.6rem 0 1.2rem; }
+.dok-liste li { margin: 0.45rem 0; }
+.dok-liste a { font-weight: 600; }
+.dok-liste a::before { content: '📄 '; font-size: 0.9em; }
+.dok-liste a:hover { color: var(--accent); text-decoration: none; }
+.ref-år h3 { color: var(--accent); font-size: 1.05rem; margin: 1.6rem 0 0.3rem; }
+.ref-badge {
+  display: inline-block; margin-left: 0.5rem; padding: 0.1rem 0.5rem;
+  border: 1px solid var(--accent); border-radius: 999px;
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--accent);
+}
+.ref-note { color: var(--muted); font-size: 0.9rem; margin-top: 2rem; }
+
 /* ---------- Board grid ---------- */
 .person-grid {
   display: grid; gap: 1.2rem;

@@ -15,6 +15,9 @@ undersider:
     generell_tekst: 'For generelle henvendelser til styret:'
     utleie_tittel: 'Utleie'
     utleie_tekst: 'Spørsmål om utleie og lignende rettes til utleieansvarlig:'
+  generalforsamling:
+    title: 'Generalforsamling'
+    teaser: 'Referater, innkalling og vedtekter fra RF-Regis generalforsamlinger.'
   ikke_funnet:
     title: 'Oops! Her finnes det ikke noe!'
     teaser: 'Kanskje siden har blitt flyttet eller slettet? Eller kanskje du bare tastet feil?'

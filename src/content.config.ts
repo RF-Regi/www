@@ -103,4 +103,15 @@ const undersider = defineCollection({
   }),
 });
 
-export const collections = { sider, styret, pakker, nettsted, forside, meny, undersider };
+const referater = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/referater' }),
+  schema: z.object({
+    tittel: z.string(),
+    år: z.number(),
+    halvår: z.enum(['vår', 'høst']),
+    ekstraordinær: z.boolean().default(false),
+    fil: z.string(),
+  }),
+});
+
+export const collections = { sider, styret, pakker, nettsted, forside, meny, undersider, referater };

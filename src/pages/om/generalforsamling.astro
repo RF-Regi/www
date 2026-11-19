@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+
+const u = (await getCollection('undersider'))[0]?.data?.generalforsamling;
+
+// Referater: nyeste først — år synkende, høst før vår innenfor et år.
+const sortering = { høst: 1, vår: 2 };
+const referater = (await getCollection('referater'))
+  .sort((a, b) =>
+    b.data.år - a.data.år ||
+    (sortering[b.data.halvår] ?? 9) - (sortering[a.data.halvår] ?? 9) ||
+    a.data.tittel.localeCompare(b.data.tittel, 'no'));
+
+// Grupper per år for listen.
+const perÅr = new Map<number, typeof referater>();
+for (const ref of referater) {
+  const liste = perÅr.get(ref.data.år) ?? [];
+  liste.push(ref);
+  perÅr.set(ref.data.år, liste);
+}
+const årListe = [...perÅr.keys()].sort((a, b) => b - a);
+---
+
+<Base title={u?.title ?? 'Generalforsamling'} description={u?.teaser ?? 'Referater fra RF-Regis generalforsamlinger.'}>
+  <PageHead
+    title={u?.title ?? 'Generalforsamling'}
+    teaser={u?.teaser ?? 'Referater, innkalling og vedtekter fra RF-Regis generalforsamlinger.'}
+    breadcrumb={[{ label: 'Om Oss', url: '/om/' }, { label: 'Generalforsamling' }]}
+  />
+  <div class="page-body wrap">
+    <div class="prose">
+      <h2>Vedtekter og styringsdokumenter</h2>
+      <ul class="dok-liste">
+        <li>
+          <a href="/media/dokumenter/vedtekter.pdf">Vedtekter og lover (PDF)</a>
+        </li>
+        <li>
+          <a href="/media/dokumenter/innkalling.pdf">Innkalling til generalforsamlingen Høst 2026 (PDF)</a>
+        </li>
+      </ul>
+
+      <h2>Referater</h2>
+      {
+        årListe.map((år) => (
+          <section class="ref-år">
+            <h3>{år}</h3>
+            <ul class="dok-liste">
+              {perÅr.get(år)!.map((ref) => (
+                <li>
+                  <a href={ref.data.fil}>
+                    {ref.data.tittel}
+                    {' '}
+                    {ref.data.halvår === 'høst' ? 'høsten' : 'våren'} {ref.data.år}
+                    {ref.data.ekstraordinær && <span class="ref-badge">ekstraordinær</span>}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+
+      <p class="ref-note">
+        Eldre referater finnes i papirarkiv og digitaliseres fortløpende. Spørsmål om
+        generalforsamlingen rettes til styret.
+      </p>
+    </div>
+  </div>
+</Base>

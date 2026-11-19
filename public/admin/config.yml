@@ -21,9 +21,9 @@ backend:
   # registreres som GitHub App, og worker-URL-en settes som base_url:
   # base_url: https://<din-authenticator-worker>.workers.dev
 
-# Medier lagres i public/images og refereres som /images/... på nettstedet.
-media_folder: public/images
-public_folder: /images
+# Medier lagres i public/media og refereres som /media/images/... på nettstedet.
+media_folder: public/media
+public_folder: /media
 
 # Endringer går via redigeringsarbeidsflyt (draft → in review → ready → publish)
 # i stedet for å committ'es rett til main.
@@ -96,6 +96,29 @@ collections:
         hint: 'Lenker kan skrives som [tekst](url) — pakkenes utstyrsliste. Teksten vises som avkryssingspunkter på siden.'
       # Sveltia: brødteksten må deklareres som «body»-felt (lagres under frontmatter).
       - { label: Beskrivelse, name: body, widget: markdown, required: false }
+
+  # Referater: src/content/referater/*.md — generalforsamlingsreferater (PDF).
+  - name: referater
+    label: Referater
+    label_singular: Referat
+    folder: src/content/referater
+    extension: md
+    create: true
+    slug: '{{slug}}'
+    summary: '{{halvår}} {{år}} – {{tittel}}'
+    fields:
+      - { label: Tittel, name: tittel, widget: string, hint: 'F.eks. «Generalforsamling» eller «Oppstartsmøte»' }
+      - { label: År, name: år, widget: number, value_type: int, min: 2000, max: 2100, default: 2026 }
+      - label: Halvår
+        name: halvår
+        widget: select
+        options: [vår, høst]
+        default: vår
+      - { label: Ekstraordinær, name: ekstraordinær, widget: boolean, default: false }
+      - label: PDF-fil
+        name: fil
+        widget: file
+        hint: 'Last opp PDF-en i mappen «referater» i mediabiblioteket. Filnavnet bør starte med H (høst) eller V (vår) + år, f.eks. V26-generalforsamling.pdf'
 
   # Nettsted: src/data/*.yaml — Astro file()-loader krever at alle feltene
   # ligger under filens rotnøkkel (site/forside/meny/undersider), derfor er de
