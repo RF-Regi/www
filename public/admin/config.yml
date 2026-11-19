@@ -30,10 +30,8 @@ public_folder: /media
 publish_mode: editorial_workflow
 
 collections:
-  # Sider: src/content/pages/*.md — «Innhold»-feltet (navn: body) er brødteksten
-  # og lagres under frontmatter av Sveltia.
   - name: sider
-    label: Sider
+    label: Sider – teksten på sidene
     label_singular: Side
     folder: src/content/pages
     extension: md
@@ -53,7 +51,28 @@ collections:
       # den lagres da under frontmatter (ikke i den), og leses fra eksisterende filer.
       - { label: Innhold, name: body, widget: markdown, required: false }
 
-  # Styret: src/content/styret/*.md
+  - name: referater
+    label: Generalforsamling – nye referater
+    label_singular: Referat
+    folder: src/content/referater
+    extension: md
+    create: true
+    slug: '{{slug}}'
+    summary: '{{halvår}} {{år}} – {{tittel}}'
+    fields:
+      - { label: Tittel, name: tittel, widget: string, hint: 'F.eks. «Generalforsamling» eller «Oppstartsmøte»' }
+      - { label: År, name: år, widget: number, value_type: int, min: 2000, max: 2100, default: 2026 }
+      - label: Halvår
+        name: halvår
+        widget: select
+        options: [vår, høst]
+        default: vår
+      - { label: Ekstraordinær, name: ekstraordinær, widget: boolean, default: false }
+      - label: PDF-fil
+        name: fil
+        widget: file
+        hint: 'Last opp PDF-en i mappen «referater» i mediabiblioteket. Filnavnet bør starte med H (høst) eller V (vår) + år, f.eks. V26-generalforsamling.pdf'
+
   - name: styret
     label: Styret
     label_singular: Styremedlem
@@ -72,9 +91,8 @@ collections:
       - { label: Rekkefølge, name: order, widget: number, value_type: int, min: 1, default: 99 }
       - { label: Bilde (valgfritt), name: image, widget: image, required: false }
 
-  # Pakker: src/content/pakker/*.md — utleiepakker for lyd og lys.
   - name: pakker
-    label: Pakker
+    label: Utleiepakker (lyd og lys)
     label_singular: Pakke
     folder: src/content/pakker
     extension: md
@@ -97,37 +115,11 @@ collections:
       # Sveltia: brødteksten må deklareres som «body»-felt (lagres under frontmatter).
       - { label: Beskrivelse, name: body, widget: markdown, required: false }
 
-  # Referater: src/content/referater/*.md — generalforsamlingsreferater (PDF).
-  - name: referater
-    label: Referater
-    label_singular: Referat
-    folder: src/content/referater
-    extension: md
-    create: true
-    slug: '{{slug}}'
-    summary: '{{halvår}} {{år}} – {{tittel}}'
-    fields:
-      - { label: Tittel, name: tittel, widget: string, hint: 'F.eks. «Generalforsamling» eller «Oppstartsmøte»' }
-      - { label: År, name: år, widget: number, value_type: int, min: 2000, max: 2100, default: 2026 }
-      - label: Halvår
-        name: halvår
-        widget: select
-        options: [vår, høst]
-        default: vår
-      - { label: Ekstraordinær, name: ekstraordinær, widget: boolean, default: false }
-      - label: PDF-fil
-        name: fil
-        widget: file
-        hint: 'Last opp PDF-en i mappen «referater» i mediabiblioteket. Filnavnet bør starte med H (høst) eller V (vår) + år, f.eks. V26-generalforsamling.pdf'
-
-  # Nettsted: src/data/*.yaml — Astro file()-loader krever at alle feltene
-  # ligger under filens rotnøkkel (site/forside/meny/undersider), derfor er de
-  # pakket inn i ett objekt-felt per fil.
   - name: nettsted
-    label: Nettsted
+    label: Nettsideinnstillinger (forside, meny, tekstoverskrifter)
     files:
       - name: site
-        label: Nettstedsinformasjon
+        label: Grunninfo – navn, slagord, Facebook
         file: src/data/site.yaml
         fields:
           - label: Nettsted
@@ -178,7 +170,7 @@ collections:
                   - { label: Bilde, name: image, widget: image }
                   - { label: Alt-tekst, name: alt, widget: string }
       - name: meny
-        label: Meny
+        label: Meny – lenkene i toppmenyen
         file: src/data/meny.yaml
         fields:
           - label: Meny
@@ -199,7 +191,7 @@ collections:
                       - { label: Tekst, name: label, widget: string }
                       - { label: Lenke, name: url, widget: string }
       - name: undersider
-        label: Sidetekster
+        label: Titler og tekster – Styret, Generalforsamling, Kontakt, 404
         file: src/data/undersider.yaml
         fields:
           - label: Sidetekster
@@ -253,3 +245,4 @@ collections:
                 fields:
                   - { label: Tittel, name: title, widget: string }
                   - { label: Undertekst, name: teaser, widget: text }
+

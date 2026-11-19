@@ -6,6 +6,8 @@ import rehypeEmailObfuscate from './src/utils/rehype-email-obfuscate.mjs';
 export default defineConfig({
   site: 'https://rfregi.no',
   trailingSlash: 'ignore',
+  // Lesbar HTML i kildevisningen (ikke minifisert én-liner).
+  compressHTML: false,
   integrations: [sitemap()],
   markdown: {
     // unified-prosessoren (ikke Sätteri) fordi den støtter rehype-plugins:
