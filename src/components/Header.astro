@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 
 const path = Astro.url.pathname;
+const siteTitle = (await getCollection('nettsted'))[0]?.data?.title ?? 'RF-Regi';
 const isActive = (url: string) => path === url || (url !== '/' && path.startsWith(url));
 
 interface NavItem {
@@ -43,7 +44,7 @@ const nav: NavItem[] = menyData ?? [
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="/" aria-current={path === '/' ? 'page' : undefined}>
-      <span class="brand-mark">RF</span> RF-Regi
+      <span class="brand-mark">RF</span> {siteTitle}
     </a>
 
     <nav class="main-nav" aria-label="Hovedmeny">

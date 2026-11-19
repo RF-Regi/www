@@ -26,6 +26,7 @@ function initials(name: string): string {
     breadcrumb={[{ label: 'Om Oss', url: '/om/' }, { label: 'Styret' }]}
   />
   <div class="page-body wrap">
+    {u?.intro && <div class="prose page-intro"><p>{u.intro}</p></div>}
     <div class="person-grid">
       {
         personer.map((person) => (

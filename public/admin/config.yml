@@ -167,6 +167,7 @@ collections:
                       - { label: Tekst, name: label, widget: string }
                       - { label: Lenke, name: url, widget: string }
               - { label: Seksjonstittel, name: section_title, widget: string }
+              - { label: Kortlenketekst (valgfritt), name: les_mer_tekst, widget: string, required: false, default: 'Les mer' }
               - label: Kort
                 name: cards
                 widget: list
@@ -211,6 +212,7 @@ collections:
                 fields:
                   - { label: Tittel, name: title, widget: string }
                   - { label: Undertekst, name: teaser, widget: text }
+                  - { label: Introtekst (valgfritt), name: intro, widget: text, required: false }
               - label: Lydpakker-siden
                 name: lydpakker
                 widget: object
@@ -233,6 +235,18 @@ collections:
                   - { label: Tekst «Generell kontakt», name: generell_tekst, widget: string }
                   - { label: Tittel «Utleie», name: utleie_tittel, widget: string }
                   - { label: Tekst «Utleie», name: utleie_tekst, widget: string }
+                  - { label: Tittel «Styret»-listen, name: styret_tittel, widget: string }
+              - label: Generalforsamling-siden
+                name: generalforsamling
+                widget: object
+                fields:
+                  - { label: Tittel, name: title, widget: string }
+                  - { label: Undertekst, name: teaser, widget: text }
+                  - { label: Overskrift «Vedtekter», name: vedtekter_tittel, widget: string }
+                  - { label: Lenketekst «Vedtekter og lover», name: vedtekter_tekst, widget: string }
+                  - { label: Lenketekst «Innkalling», name: innkalling_tekst, widget: string, hint: 'Oppdater når ny innkalling legges ut, f.eks. «Innkalling til generalforsamlingen våren 2026 (PDF)»' }
+                  - { label: Overskrift «Referater», name: referater_tittel, widget: string }
+                  - { label: Avsluttende notat, name: notat, widget: text, hint: 'Teksten nederst på siden' }
               - label: 404-siden
                 name: ikke_funnet
                 widget: object

@@ -31,17 +31,17 @@ const årListe = [...perÅr.keys()].sort((a, b) => b - a);
   />
   <div class="page-body wrap">
     <div class="prose">
-      <h2>Vedtekter og styringsdokumenter</h2>
+      <h2>{u?.vedtekter_tittel ?? 'Vedtekter og styringsdokumenter'}</h2>
       <ul class="dok-liste">
         <li>
-          <a href="/media/dokumenter/vedtekter.pdf">Vedtekter og lover (PDF)</a>
+          <a href="/media/dokumenter/vedtekter.pdf">{u?.vedtekter_tekst ?? 'Vedtekter og lover (PDF)'}</a>
         </li>
         <li>
-          <a href="/media/dokumenter/innkalling.pdf">Innkalling til generalforsamlingen Høst 2026 (PDF)</a>
+          <a href="/media/dokumenter/innkalling.pdf">{u?.innkalling_tekst ?? 'Innkalling til generalforsamlingen vår 2023 (PDF)'}</a>
         </li>
       </ul>
 
-      <h2>Referater</h2>
+      <h2>{u?.referater_tittel ?? 'Referater'}</h2>
       {
         årListe.map((år) => (
           <section class="ref-år">
@@ -62,10 +62,7 @@ const årListe = [...perÅr.keys()].sort((a, b) => b - a);
         ))
       }
 
-      <p class="ref-note">
-        Eldre referater finnes i papirarkiv og digitaliseres fortløpende. Spørsmål om
-        generalforsamlingen rettes til styret.
-      </p>
+      <p class="ref-note">{u?.notat ?? 'Eldre referater finnes i papirarkiv og digitaliseres fortløpende.'}</p>
     </div>
   </div>
 </Base>
