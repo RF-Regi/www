@@ -1,0 +1,46 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import { linkifyItem } from '../../utils/items';
+
+const u = (await getCollection('undersider'))[0]?.data?.lydpakker;
+
+const pakker = (await getCollection('pakker', ({ data }) => data.type === 'lyd')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const rendered = await Promise.all(
+  pakker.map(async (pakke) => ({ pakke, Content: (await render(pakke)).Content }))
+);
+---
+
+<Base title={u?.title ?? 'Lydpakker'} description={u?.teaser ?? 'RF-Regis lydpakker - utleie av lydutstyr til studentforeninger i Oslo.'}>
+  <PageHead
+    title={u?.title ?? 'Lydpakker'}
+    teaser={u?.teaser ?? 'RF-Regi har et bredt spekter av lydutstyr. Her er pakkene vi har satt sammen.'}
+    breadcrumb={[{ label: 'Utleie', url: '/utleie/' }, { label: 'Lydpakker' }]}
+  />
+  <div class="page-body wrap">
+    {
+      rendered.map(({ pakke, Content }) => (
+        <article class="pakke">
+          <h2>{pakke.data.title}</h2>
+          <div class="pakke-body">
+            <Content />
+          </div>
+          {pakke.data.items && (
+            <Fragment>
+              {pakke.data.items_label && <p class="pakke-items-label">{pakke.data.items_label}</p>}
+              <ul class="pakke-items">
+                {pakke.data.items.map((item) => (
+                  <li set:html={linkifyItem(item)} />
+                ))}
+              </ul>
+            </Fragment>
+          )}
+        </article>
+      ))
+    }
+  </div>
+</Base>

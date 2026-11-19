@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# CMS-grensesnittet skal ikke indekseres
+Disallow: /admin/
+
+Sitemap: https://rfregi.no/sitemap-index.xml

@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+
+const nf = (await getCollection('undersider'))[0]?.data?.ikke_funnet;
+---
+
+<Base title={nf?.title ?? 'Oops! Her finnes det ikke noe!'} description={nf?.teaser ?? 'Siden du lette etter finnes ikke på rfregi.no.'}>
+  <PageHead title={nf?.title} teaser={nf?.teaser} />
+  <div class="page-body wrap">
+    <div class="prose">
+      <h2>No problem!</h2>
+      <p>
+        Prøv …<br />
+        … å starte på <a href="/">forsiden</a>;<br />
+        Hvis du ikke finner siden du leter etter, <a href="/kontakt/">spør oss</a>.
+      </p>
+    </div>
+  </div>
+</Base>

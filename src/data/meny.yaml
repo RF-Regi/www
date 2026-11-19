@@ -1,0 +1,21 @@
+meny:
+  items:
+    - label: 'Utleie'
+      url: '/utleie/'
+      children:
+        - { label: 'Lydpakker', url: '/utleie/lydpakker/' }
+        - { label: 'Lyspakker', url: '/utleie/lyspakker/' }
+        - { label: 'Scene og teknisk', url: '/utleie/scene-teknisk/' }
+        - { label: 'Utleiebetingelser', url: '/utleie/utleiebetingelser/' }
+    - label: 'Frivillig'
+      url: '/frivillig/'
+      children:
+        - { label: 'Verv', url: '/frivillig/verv/' }
+        - { label: 'Bli med', url: '/frivillig/blimed/' }
+    - label: 'Om oss'
+      url: '/om/'
+      children:
+        - { label: 'Styret', url: '/om/styret/' }
+        - { label: 'Generalforsamling', url: '/om/generalforsamling/' }
+    - label: 'Kontakt oss'
+      url: '/kontakt/'
