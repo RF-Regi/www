@@ -13,6 +13,7 @@ const k = {
   generellTekst: u?.generell_tekst ?? '{k.generellTekst}',
   utleieTittel: u?.utleie_tittel ?? 'Utleie',
   utleieTekst: u?.utleie_tekst ?? '{k.utleieTekst}',
+  styretTittel: u?.styret_tittel ?? 'Styret',
 };
 
 const styret = (await getCollection('styret')).sort((a, b) => a.data.order - b.data.order);
@@ -42,7 +43,7 @@ const fields = [
         <EpostLenke encoded="on.igerfr@eieltu" />
       </p>
 
-      <h2>Styret</h2>
+      <h2>{k.styretTittel}</h2>
       <ul>
         {
           styret.map((person) => (

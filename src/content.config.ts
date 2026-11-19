@@ -58,6 +58,7 @@ const forside = defineCollection({
       cta_secondary: lenke,
     }),
     section_title: z.string(),
+    les_mer_tekst: z.string().optional(),
     cards: z.array(
       z.object({
         title: z.string(),
@@ -88,7 +89,7 @@ const sidetekst = z.object({ title: z.string(), teaser: z.string() });
 const undersider = defineCollection({
   loader: file('./src/data/undersider.yaml'),
   schema: z.object({
-    styret: sidetekst,
+    styret: sidetekst.extend({ intro: z.string().optional() }),
     lydpakker: sidetekst,
     lyspakker: sidetekst,
     kontakt: z.object({
@@ -98,6 +99,16 @@ const undersider = defineCollection({
       generell_tekst: z.string(),
       utleie_tittel: z.string(),
       utleie_tekst: z.string(),
+      styret_tittel: z.string().optional(),
+    }),
+    generalforsamling: z.object({
+      title: z.string(),
+      teaser: z.string(),
+      vedtekter_tittel: z.string(),
+      vedtekter_tekst: z.string(),
+      innkalling_tekst: z.string(),
+      referater_tittel: z.string(),
+      notat: z.string(),
     }),
     ikke_funnet: sidetekst,
   }),

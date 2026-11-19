@@ -73,7 +73,7 @@ const widgets: Widget[] = (f?.cards ?? []).map((card) => ({
               <div class="card-body">
                 <h3>{widget.title}</h3>
                 <p>{widget.text}</p>
-                <span class="card-link">Les mer</span>
+                <span class="card-link">{f?.les_mer_tekst ?? 'Les mer'}</span>
               </div>
             </a>
           ))
