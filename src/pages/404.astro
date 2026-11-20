@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
 
-const nf = (await getCollection('undersider'))[0]?.data?.ikke_funnet;
+const nf = (await getCollection('sidetekstIkkeFunnet'))[0]?.data;
 ---
 
 <Base title={nf?.title ?? 'Oops! Her finnes det ikke noe!'} description={nf?.teaser ?? 'Siden du lette etter finnes ikke på rfregi.no.'}>

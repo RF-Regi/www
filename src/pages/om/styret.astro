@@ -4,7 +4,7 @@ import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
 import EpostLenke from '../../components/EpostLenke.astro';
 
-const u = (await getCollection('undersider'))[0]?.data?.styret;
+const u = (await getCollection('sidetekstStyret'))[0]?.data;
 
 const styret = (await getCollection('styret')).sort((a, b) => a.data.order - b.data.order);
 const personer = styret.filter((person) => person.data.role.toLowerCase() !== 'generell kontakt');

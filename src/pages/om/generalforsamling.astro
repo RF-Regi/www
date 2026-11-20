@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
 
-const u = (await getCollection('undersider'))[0]?.data?.generalforsamling;
+const u = (await getCollection('sidetekstGeneralforsamling'))[0]?.data;
 
 // Referater: nyeste først — år synkende, høst før vår innenfor et år.
 const sortering = { høst: 1, vår: 2 };

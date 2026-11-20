@@ -37,14 +37,19 @@ collections:
     extension: md
     create: true
     slug: '{{slug}}'
+    summary: '{{title}}'
+    sortable_fields: [title]
     fields:
       - { label: Tittel, name: title, widget: string }
       - { label: Teaser, name: teaser, widget: string, required: false }
-      - { label: Permalenke, name: permalink, widget: string, hint: 'F.eks. /utleie/ (må starte og slutte med skråstrek)' }
+      - { label: Permalenke, name: permalink, widget: string, pattern: ['^\\/.+\\/$', 'Må starte og slutte med skråstrek, f.eks. /utleie/'] }
       - label: Skjema
         name: showForm
         widget: select
-        options: [none, join, contact]
+        options:
+          - { label: Ingen skjema, value: none }
+          - { label: Bli med-skjema (verving), value: join }
+          - { label: Kontaktskjema, value: contact }
         default: none
         hint: 'Velg hvilket innsendingskjema som vises på siden'
       # Sveltia krever at brødteksten er deklarert som felt med navnet «body» —
@@ -59,13 +64,16 @@ collections:
     create: true
     slug: '{{slug}}'
     summary: '{{halvår}} {{år}} – {{tittel}}'
+    sortable_fields: [år, tittel]
     fields:
       - { label: Tittel, name: tittel, widget: string, hint: 'F.eks. «Generalforsamling» eller «Oppstartsmøte»' }
       - { label: År, name: år, widget: number, value_type: int, min: 2000, max: 2100, default: 2026 }
       - label: Halvår
         name: halvår
         widget: select
-        options: [vår, høst]
+        options:
+          - { label: Vår, value: vår }
+          - { label: Høst, value: høst }
         default: vår
       - { label: Ekstraordinær, name: ekstraordinær, widget: boolean, default: false }
       - label: PDF-fil
@@ -84,6 +92,8 @@ collections:
     identifier_field: role
     slug: '{{role}}'
     summary: '{{role}} – {{name}}'
+    thumbnail: image
+    sortable_fields: [order, name]
     fields:
       - { label: Navn, name: name, widget: string }
       - { label: Rolle, name: role, widget: string }
@@ -98,13 +108,21 @@ collections:
     extension: md
     create: true
     slug: '{{slug}}'
+    summary: '{{type}} – {{title}}'
+    thumbnail: image
+    sortable_fields: [order, title]
+    view_groups:
+      - { label: Type, field: type }
     fields:
       - label: Type
         name: type
         widget: select
-        options: [lyd, lys]
+        options:
+          - { label: Lyd, value: lyd }
+          - { label: Lys, value: lys }
       - { label: Tittel, name: title, widget: string }
       - { label: Rekkefølge, name: order, widget: number, value_type: int, min: 1, default: 99 }
+      - { label: Bilde (valgfritt), name: image, widget: image, required: false }
       - { label: Ledetekst for utstyrslisten (valgfritt), name: items_label, widget: string, required: false, default: 'I pakken:' }
       - label: Innholdspunkter
         name: items
@@ -114,6 +132,83 @@ collections:
         hint: 'Lenker kan skrives som [tekst](url) — pakkenes utstyrsliste. Teksten vises som avkryssingspunkter på siden.'
       # Sveltia: brødteksten må deklareres som «body»-felt (lagres under frontmatter).
       - { label: Beskrivelse, name: body, widget: markdown, required: false }
+
+  # Sidetekster: src/data/sider-tekster/*.yaml — én fil per side. Hver oppføring
+  # åpner feltene til nettopp den siden.
+  - name: sidetekster
+    label: Sidetekster – tittel og tekster per side
+    files:
+      - name: styret
+        label: Styret-siden
+        file: src/data/sider-tekster/styret.yaml
+        fields:
+          - label: Styret-siden
+            name: styret
+            widget: object
+            fields:
+              - { label: Tittel, name: title, widget: string }
+              - { label: Undertekst, name: teaser, widget: text }
+              - { label: Introtekst (valgfritt), name: intro, widget: text, required: false, hint: 'Vises over styret-listen' }
+      - name: generalforsamling
+        label: Generalforsamling-siden
+        file: src/data/sider-tekster/generalforsamling.yaml
+        fields:
+          - label: Generalforsamling-siden
+            name: generalforsamling
+            widget: object
+            fields:
+              - { label: Tittel, name: title, widget: string }
+              - { label: Undertekst, name: teaser, widget: text }
+              - { label: Overskrift «Vedtekter», name: vedtekter_tittel, widget: string }
+              - { label: Lenketekst «Vedtekter og lover», name: vedtekter_tekst, widget: string }
+              - { label: Lenketekst «Innkalling», name: innkalling_tekst, widget: string, hint: 'Oppdater når ny innkalling legges ut' }
+              - { label: Overskrift «Referater», name: referater_tittel, widget: string }
+              - { label: Avsluttende notat, name: notat, widget: text }
+      - name: kontakt
+        label: Kontakt-siden
+        file: src/data/sider-tekster/kontakt.yaml
+        fields:
+          - label: Kontakt-siden
+            name: kontakt
+            widget: object
+            fields:
+              - { label: Tittel, name: title, widget: string }
+              - { label: Undertekst, name: teaser, widget: text }
+              - { label: Tittel «Generell kontakt», name: generell_tittel, widget: string }
+              - { label: Tekst «Generell kontakt», name: generell_tekst, widget: string }
+              - { label: Tittel «Utleie», name: utleie_tittel, widget: string }
+              - { label: Tekst «Utleie», name: utleie_tekst, widget: string }
+              - { label: Tittel «Styret»-listen, name: styret_tittel, widget: string }
+      - name: lydpakker
+        label: Lydpakker-siden
+        file: src/data/sider-tekster/lydpakker.yaml
+        fields:
+          - label: Lydpakker-siden
+            name: lydpakker
+            widget: object
+            fields:
+              - { label: Tittel, name: title, widget: string }
+              - { label: Undertekst, name: teaser, widget: text }
+      - name: lyspakker
+        label: Lyspakker-siden
+        file: src/data/sider-tekster/lyspakker.yaml
+        fields:
+          - label: Lyspakker-siden
+            name: lyspakker
+            widget: object
+            fields:
+              - { label: Tittel, name: title, widget: string }
+              - { label: Undertekst, name: teaser, widget: text }
+      - name: ikke_funnet
+        label: 404-siden
+        file: src/data/sider-tekster/ikke_funnet.yaml
+        fields:
+          - label: 404-siden
+            name: ikke_funnet
+            widget: object
+            fields:
+              - { label: Tittel, name: title, widget: string }
+              - { label: Undertekst, name: teaser, widget: text }
 
   - name: nettsted
     label: Nettsideinnstillinger (forside, meny, tekstoverskrifter)
@@ -190,59 +285,3 @@ collections:
                     fields:
                       - { label: Tekst, name: label, widget: string }
                       - { label: Lenke, name: url, widget: string }
-      - name: undersider
-        label: Titler og tekster – Styret, Generalforsamling, Kontakt, 404
-        file: src/data/undersider.yaml
-        fields:
-          - label: Sidetekster
-            name: undersider
-            widget: object
-            fields:
-              - label: Styret-siden
-                name: styret
-                widget: object
-                fields:
-                  - { label: Tittel, name: title, widget: string }
-                  - { label: Undertekst, name: teaser, widget: text }
-                  - { label: Introtekst (valgfritt), name: intro, widget: text, required: false }
-              - label: Lydpakker-siden
-                name: lydpakker
-                widget: object
-                fields:
-                  - { label: Tittel, name: title, widget: string }
-                  - { label: Undertekst, name: teaser, widget: text }
-              - label: Lyspakker-siden
-                name: lyspakker
-                widget: object
-                fields:
-                  - { label: Tittel, name: title, widget: string }
-                  - { label: Undertekst, name: teaser, widget: text }
-              - label: Kontakt-siden
-                name: kontakt
-                widget: object
-                fields:
-                  - { label: Tittel, name: title, widget: string }
-                  - { label: Undertekst, name: teaser, widget: text }
-                  - { label: Tittel «Generell kontakt», name: generell_tittel, widget: string }
-                  - { label: Tekst «Generell kontakt», name: generell_tekst, widget: string }
-                  - { label: Tittel «Utleie», name: utleie_tittel, widget: string }
-                  - { label: Tekst «Utleie», name: utleie_tekst, widget: string }
-                  - { label: Tittel «Styret»-listen, name: styret_tittel, widget: string }
-              - label: Generalforsamling-siden
-                name: generalforsamling
-                widget: object
-                fields:
-                  - { label: Tittel, name: title, widget: string }
-                  - { label: Undertekst, name: teaser, widget: text }
-                  - { label: Overskrift «Vedtekter», name: vedtekter_tittel, widget: string }
-                  - { label: Lenketekst «Vedtekter og lover», name: vedtekter_tekst, widget: string }
-                  - { label: Lenketekst «Innkalling», name: innkalling_tekst, widget: string, hint: 'Oppdater når ny innkalling legges ut, f.eks. «Innkalling til generalforsamlingen våren 2026 (PDF)»' }
-                  - { label: Overskrift «Referater», name: referater_tittel, widget: string }
-                  - { label: Avsluttende notat, name: notat, widget: text, hint: 'Teksten nederst på siden' }
-              - label: 404-siden
-                name: ikke_funnet
-                widget: object
-                fields:
-                  - { label: Tittel, name: title, widget: string }
-                  - { label: Undertekst, name: teaser, widget: text }
-

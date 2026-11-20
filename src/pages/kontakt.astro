@@ -5,7 +5,7 @@ import PageHead from '../components/PageHead.astro';
 import NetlifyForm from '../components/NetlifyForm.astro';
 import EpostLenke from '../components/EpostLenke.astro';
 
-const u = (await getCollection('undersider'))[0]?.data?.kontakt;
+const u = (await getCollection('sidetekstKontakt'))[0]?.data;
 const k = {
   title: u?.title ?? 'Kontakt oss',
   teaser: u?.teaser ?? 'Vil du komme i kontakt med oss? Bruk skjemaet eller send oss en mail.',

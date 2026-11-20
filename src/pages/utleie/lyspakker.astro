@@ -4,7 +4,7 @@ import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
 import { linkifyItem } from '../../utils/items';
 
-const u = (await getCollection('undersider'))[0]?.data?.lyspakker;
+const u = (await getCollection('sidetekstLyspakker'))[0]?.data;
 
 const pakker = (await getCollection('pakker', ({ data }) => data.type === 'lys')).sort(
   (a, b) => a.data.order - b.data.order

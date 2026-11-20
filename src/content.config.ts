@@ -84,34 +84,56 @@ const meny = defineCollection({
   }),
 });
 
-const sidetekst = z.object({ title: z.string(), teaser: z.string() });
-
-const undersider = defineCollection({
-  loader: file('./src/data/undersider.yaml'),
+// Sidetekster: én fil per side i src/data/sider-tekster/. Filens rotnøkkel blir
+// oppføringens id (f.eks. «styret»), og data under den blir entry.data.
+const sidetekstStyret = defineCollection({
+  loader: file('./src/data/sider-tekster/styret.yaml'),
   schema: z.object({
-    styret: sidetekst.extend({ intro: z.string().optional() }),
-    lydpakker: sidetekst,
-    lyspakker: sidetekst,
-    kontakt: z.object({
-      title: z.string(),
-      teaser: z.string(),
-      generell_tittel: z.string(),
-      generell_tekst: z.string(),
-      utleie_tittel: z.string(),
-      utleie_tekst: z.string(),
-      styret_tittel: z.string().optional(),
-    }),
-    generalforsamling: z.object({
-      title: z.string(),
-      teaser: z.string(),
-      vedtekter_tittel: z.string(),
-      vedtekter_tekst: z.string(),
-      innkalling_tekst: z.string(),
-      referater_tittel: z.string(),
-      notat: z.string(),
-    }),
-    ikke_funnet: sidetekst,
+    title: z.string(),
+    teaser: z.string(),
+    intro: z.string().optional(),
   }),
+});
+
+const sidetekstGeneralforsamling = defineCollection({
+  loader: file('./src/data/sider-tekster/generalforsamling.yaml'),
+  schema: z.object({
+    title: z.string(),
+    teaser: z.string(),
+    vedtekter_tittel: z.string(),
+    vedtekter_tekst: z.string(),
+    innkalling_tekst: z.string(),
+    referater_tittel: z.string(),
+    notat: z.string(),
+  }),
+});
+
+const sidetekstKontakt = defineCollection({
+  loader: file('./src/data/sider-tekster/kontakt.yaml'),
+  schema: z.object({
+    title: z.string(),
+    teaser: z.string(),
+    generell_tittel: z.string(),
+    generell_tekst: z.string(),
+    utleie_tittel: z.string(),
+    utleie_tekst: z.string(),
+    styret_tittel: z.string().optional(),
+  }),
+});
+
+const sidetekstLydpakker = defineCollection({
+  loader: file('./src/data/sider-tekster/lydpakker.yaml'),
+  schema: z.object({ title: z.string(), teaser: z.string() }),
+});
+
+const sidetekstLyspakker = defineCollection({
+  loader: file('./src/data/sider-tekster/lyspakker.yaml'),
+  schema: z.object({ title: z.string(), teaser: z.string() }),
+});
+
+const sidetekstIkkeFunnet = defineCollection({
+  loader: file('./src/data/sider-tekster/ikke_funnet.yaml'),
+  schema: z.object({ title: z.string(), teaser: z.string() }),
 });
 
 const referater = defineCollection({
@@ -125,4 +147,4 @@ const referater = defineCollection({
   }),
 });
 
-export const collections = { sider, styret, pakker, nettsted, forside, meny, undersider, referater };
+export const collections = { sider, styret, pakker, nettsted, forside, meny, referater, sidetekstStyret, sidetekstGeneralforsamling, sidetekstKontakt, sidetekstLydpakker, sidetekstLyspakker, sidetekstIkkeFunnet };

@@ -80,7 +80,7 @@ automatisk.
 | **Nettsted** | `src/data/site.yaml` | `site.title`, `site.slogan`, `site.description`, `site.facebook`, `site.footer_text` | objekt under `site`-nøkkelen (kreves av Astro `file()`-loader) |
 | **Nettsted → Forsiden** | `src/data/forside.yaml` | `forside.hero` (kicker/tittel/intro/CTA-knapper), `forside.section_title`, `forside.cards` (liste: tittel/tekst/lenke/bilde/alt) | hele forsiden |
 | **Nettsted → Meny** | `src/data/meny.yaml` | `meny.items` (liste: tekst/lenke/undermeny) | toppmenyen + bunntekst-snarveier |
-| **Nettsted → Sidetekster** | `src/data/undersider.yaml` | `undersider.styret`, `.lydpakker`, `.lyspakker`, `.kontakt`, `.ikke_funnet` (tittel/undertekst per side) | sidetitler og tekster på undersidene |
+| **Sidetekster** | `src/data/sider-tekster/*.yaml` (én fil per side) | `title`, `teaser` + side­spesifikke felt (f.eks. `intro` på Styret, seksjonstekster på Generalforsamling og Kontakt) | titler og tekster per underside |
 
 Media lastes opp til `public/media/images/` og refereres som `/media/images/…` på
 nettstedet (`media_folder` / `public_folder` i `config.yml`).
