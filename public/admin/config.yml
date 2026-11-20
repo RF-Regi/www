@@ -42,7 +42,7 @@ collections:
     fields:
       - { label: Tittel, name: title, widget: string }
       - { label: Teaser, name: teaser, widget: string, required: false }
-      - { label: Permalenke, name: permalink, widget: string, pattern: ['^\\/.+\\/$', 'Må starte og slutte med skråstrek, f.eks. /utleie/'] }
+      - { label: Permalenke, name: permalink, widget: string, pattern: ['^/.+/$', 'Må starte og slutte med skråstrek, f.eks. /utleie/'] }
       - label: Skjema
         name: showForm
         widget: select
