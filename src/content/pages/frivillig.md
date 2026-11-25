@@ -1,7 +1,7 @@
 ---
-title: Frivillig i RF-Regi
-teaser: Hvilke minner vil du sitte igjen med fra studietiden?
-permalink: /frivillig/
+title: 'Frivillig i RF-Regi'
+teaser: 'Hvilke minner vil du sitte igjen med fra studietiden?'
+permalink: '/frivillig/'
 showForm: join
 ---
 
@@ -24,7 +24,7 @@ Vi opplever mange fulle dansegulv og fornøyde gjester i løpet av semesteret, s
 
 ## Lyd-gruppen
 
-Lyd er for personene som er mest glad i å lære om lyd. Dette er personene som lærer seg å styre lyd under konserter og arrangementer. Gjengen her består av dyktige lydteknikere og amatører som lærer seg å styre lyd under arrangementer. Dette er et flott sted å starte for å senere kunne jobbe som tekniker gjennom oss eller frilanser proffesjonelt. Her er det gode muligheter til å lære å styre lyden under mindre band og artister, så tersel er lav og du får god oppfølging av personer som har god kontroll på dette. Er dette noe du kunne sett for deg, da anbefales det å sende en mail til <a class="epost-obf" data-epost="on.igerfr@nnamrofiger" rel="nofollow"><span class="epost-tekst">on.igerfr@nnamrofiger</span></a>
+Lyd er for personene som er mest glad i å lære om lyd. Dette er personene som lærer seg å styre lyd under konserter og arrangementer. Gjengen her består av dyktige lydteknikere og amatører som lærer seg å styre lyd under arrangementer. Dette er et flott sted å starte for å senere kunne jobbe som tekniker gjennom oss eller frilanser proffesjonelt. Her er det gode muligheter til å lære å styre lyden under mindre band og artister, så terksel er lav og du får god oppfølging av personer som har god kontroll på dette. Er dette noe du kunne sett for deg, da anbefales det å sende en mail til <a class="epost-obf" data-epost="on.igerfr@nnamrofiger" rel="nofollow"><span class="epost-tekst">on.igerfr@nnamrofiger</span></a>
 
 ## Lys-gruppen
 
